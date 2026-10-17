@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }} status</title>
+  <style>
+    body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif; margin: 2rem auto; max-width: 960px; padding: 0 1rem; color: #222; }
+    h1 { margin-bottom: 0.2rem; }
+    .summary { color: #666; margin-top: 0; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { text-align: left; padding: 0.5rem; border-bottom: 1px solid #ddd; }
+    .up { color: #1a7f37; font-weight: bold; }
+    .down { color: #cf222e; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>{{ title }}</h1>
+  <p class="summary">{{ up }} up, {{ down }} down &middot; generated {{ generated }}</p>
+  <table>
+    <thead>
+      <tr><th>Site</th><th>Status</th><th>Code</th><th>Response time</th><th>Title</th><th>Last modified</th><th>Checked</th></tr>
+    </thead>
+    <tbody>
+    {% for r in results %}
+      <tr>
+        <td><a href="{{ r.url }}">{{ r.name }}</a></td>
+        <td class="{{ 'up' if r.up else 'down' }}">{{ 'UP' if r.up else 'DOWN' }}</td>
+        <td>{{ r.status or r.reason }}</td>
+        <td>{% if r.elapsed_ms is not none %}{{ r.elapsed_ms }} ms{% else %}-{% endif %}</td>
+        <td>{{ r.title }}</td>
+        <td>{{ r.last_modified or '-' }}</td>
+        <td>{{ r.checked_at }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>
