@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "linkwatch"
+version = "0.3.1"
+description = "A small CLI link and uptime checker with an HTML status page"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "toml==0.10.2",
+    "appdirs==1.4.4",
+    "requests==2.31.0",
+    "Jinja2==2.11.3",
+    "pydantic>=2",
+    "click>=7",
+    "six",
+    "chardet==5.2.0",
+    "setuptools==75.8.0",
+    "idna==2.7",
+    "python-dateutil",
+    "rich",
+]
+
+[project.scripts]
+linkwatch = "linkwatch.cli:cli"
+
+[tool.setuptools]
+packages = ["linkwatch"]
+
+[tool.setuptools.package-data]
+linkwatch = ["templates/*.j2"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
