@@ -1,0 +1,55 @@
+name: agent-ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  agent-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: astral-sh/setup-uv@v6
+      - name: Install agent dependencies
+        run: uv pip install --system -r requirements-agent.txt
+      - name: Skill scanner self-test
+        run: python .agents/skills/dependency-exit/scripts/selftest.py
+      - name: Agent tests (fake provider only; live-model tests are excluded)
+        run: python -m pytest tests_agent -q -p no:cacheprovider
+
+  linkwatch-verification:
+    # Runs the objective verifier on LinkWatch itself (no model needed). Fails if the gate fails,
+    # which documents the current state of the dependency manifests on each push.
+    runs-on: ubuntu-latest
+    needs: agent-tests
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: |
+            3.13
+            3.12
+      - uses: astral-sh/setup-uv@v6
+      - run: uv pip install --system -r requirements-agent.txt
+      - name: Index and baseline (both install paths, Python 3.12 + 3.13)
+        run: |
+          python -m resilience_agent --offline index
+          python -m resilience_agent baseline
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verification-evidence
+          path: .resilience/artifacts

@@ -1,0 +1,3 @@
+[[forbid]]
+source = "pkg.b"
+target = "pkg.a"

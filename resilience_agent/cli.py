@@ -256,7 +256,10 @@ def cmd_review(args):
     from .review import resolve_ref
     b, h = resolve_ref(s.repo, args.base), resolve_ref(s.repo, args.head)
     review_id = f"review-{b[:8]}-{h[:8]}"
-    g = workflow.review_graph(s, _provider(s), db, log)
+    provider = _provider(s)
+    if not args.no_ai and provider.health().get("status") != "ready":  # also records the model digest
+        console.print("[yellow]model unavailable: the AI steps will be recorded as failed[/yellow]")
+    g = workflow.review_graph(s, provider, db, log)
     values, _ = workflow.drive(g, review_id + (f"-{args.fresh}" if args.fresh else ""), {
         "review_id": review_id, "base": args.base, "head": args.head, "pr_description": desc,
         "full_suite": args.full_suite, "gen_tests": args.gen_tests, "use_ai": not args.no_ai})

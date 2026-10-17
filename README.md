@@ -27,14 +27,22 @@ Every claim in every report carries one label:
 ### Maintenance mode (implemented)
 Finds and fixes dependency rot in a repository: stale pins, manifests that disagree, removed APIs, silent behaviour changes.
 
-### Review mode (in development)
-Checks an incoming pull request instead of the whole repository:
+### Review mode (implemented)
+Checks an incoming change (base vs head) instead of the whole repository:
 
-- **Blast radius:** which modules, symbols and tests a change touches, using the AST and the Graphify knowledge graph.
-- **Structure checks:** removed or renamed public symbols, broken imports and changed signatures introduced by the diff.
-- **Evidence-labelled review:** each finding is tagged OBSERVED, VERIFIED or AI, and verification re-runs the affected tests.
+```bash
+python -m resilience_agent --repo PATH review --base main --head my-branch --pr-description pr.md
+```
 
-Review mode reuses the same context engine, verifier and capsule format as maintenance mode.
+- **Base vs head on the same verifier.** Both commits are checked out in separate git worktrees and run through the same checks. A check that passes on base and fails on head is a `REGRESSION` (VERIFIED).
+- **Blast radius.** Changed lines are mapped to functions and classes, then the call graph is walked backwards (stdlib AST plus Graphify) to find callers, entry points and tests (OBSERVED). Per-test coverage (`--cov-context=test`) records which tests really execute the change (VERIFIED). Anything only one source found is marked *uncertain*, and the report gives the share of affected functions that any test executes.
+- **Only affected tests run** on both sides, unless you pass `--full-suite` or the diff touches test or packaging config.
+- **Structural checks (no AI).** Public API breaks via [griffe](https://mkdocstrings.github.io/griffe/) (removed or renamed objects, moved parameters, changed defaults), new import cycles, optional layer rules in `pr-analyser.toml`, entry-point, dependency and undeclared-import changes.
+- **Behaviour diff.** For pure functions in the blast radius, inputs recorded from base's own tests are replayed on base and head and the outputs compared (VERIFIED). Optional AI-written tests (`--gen-tests N`) live only in `.resilience/generated_tests/` and count only if they pass on base first.
+- **AI review of intent.** With a PR description, one model call compares what the PR claims with what the diff does (AI). It can never change the verdict.
+- **Verdict:** `SAFE`, `REGRESSION_FOUND`, `FIXED`, `NEEDS_HUMAN`, `UNVERIFIABLE` (for example, no test executes the changed code) or, in maintenance mode, `NO_VERIFIED_SOLUTION`.
+
+Review mode reuses the maintenance context engine, verifier, scanners and capsule format. The Streamlit dashboard has a Review tab.
 
 ---
 
@@ -77,7 +85,9 @@ flowchart LR
 - ranking and weight history, tests before and after, remaining risks and gaps
 - rollback steps and reproduction commands
 
-Within a run, a patch identical to one that already failed is rejected and never ranked, and the proposer is told "THIS FAILED, do not repeat it". Carrying failed fixes across runs is on the roadmap.
+Within a run, a patch identical to one that already failed is rejected and never ranked, and the proposer is told "THIS FAILED, do not repeat it".
+
+**Decision log across runs.** Every repair and review writes `.resilience/history/<issue>/<entry>.json` plus a Markdown summary. Each reason must point at a real artifact (a verifier result, a saved checker output or a human approval row), otherwise the entry is refused. AI text is only allowed in a separate, labelled `ai_summary`, and secrets are scrubbed before saving. On the next repair, approaches that failed are passed to the proposers and reviewers and identical patches are rejected. After `RA_HISTORY_MAX_AGE_DAYS` (default 30) they become "retest" instead of "skip".
 
 **Safe by construction.** Allow-listed commands, no shell, timeouts, secrets scrubbed from the environment, patches confined to allowed files, and no ability to edit tests.
 
@@ -97,6 +107,8 @@ Real runs on 17 Oct 2026. Logs and capsules are in [`demo/`](demo/).
 | Discovery council | The voters disagreed (Discovery said real issue, Skeptic and Evidence dissented). The evidence rules kept Jinja2 and Pydantic as supported because executed failures backed them, and downgraded two weak issues to needs-investigation. |
 | `RA-jinja2` | **VERIFIED_RESOLUTION** on attempt 3: `Jinja2==3.1.6` in both manifests. 18 checks and tests fixed, 0 regressions ([patch](demo/jinja2-capsule/selected.patch), [capsule](demo/jinja2-capsule/capsule.md)). |
 | `RA-pydantic` | **NO_VERIFIED_SOLUTION** in runs 2, 5 and 7. The 3B model only re-pinned Pydantic and never migrated `linkwatch/config.py`; the verifier blocked each candidate for 2 regressions ([run 5 capsule](demo/run5-capsule/capsule.md)). The agent reported failure instead of presenting an unproven patch. |
+
+**Review mode on LinkWatch (17 Oct 2026).** On a throwaway branch of a fresh clone, the public `cache.load_results` was renamed to `read_results`, the CLI caller was updated and the tests were not, under a PR description claiming "no behaviour change". Result: **REGRESSION_FOUND** (VERIFIED: `test_cache_round_trip` passes on base and fails on head in all 4 environments). The blast radius named the 3 changed symbols, the CLI entry point and 2 affected tests, both confirmed by static analysis and per-test coverage. Only those 2 test files ran on each side. The API check reported `load_results` as removed and "likely renamed to `read_results`" (OBSERVED). qwen2.5-coder:3b flagged the "no behaviour change" claim as a mismatch (AI). With cached venvs the whole run took 147 s on the i5 laptop.
 
 Failures that improved the agent: the 3B model truncated `pyproject.toml` (now exact find/replace edits with parser and truncation guards), one generation ran over 15 minutes (now output caps and hard timeouts), early candidates only aligned version pins and tests caught two regressions, and an identical failed patch was resubmitted (now rejected as a duplicate).
 
@@ -147,6 +159,7 @@ python -m resilience_agent approve RA-pydantic --scope pydantic,jinja2   # Human
 python -m resilience_agent repair RA-pydantic      # repair council + verification + capsule
 python -m resilience_agent report RA-pydantic
 python -m resilience_agent publish RA-pydantic     # Human Gate 2
+python -m resilience_agent review --base main --head my-branch   # review mode
 ```
 
 Dashboard and tests:
@@ -168,18 +181,35 @@ Settings are environment variables prefixed `RA_` (see `.env.example`). Full arc
 - **Proof is only as good as the tests.** A passing run is evidence, not a guarantee. Gaps in test coverage are gaps in verification.
 - **Detection gaps.** Poetry and `setup.py` dependency lists are not parsed, and dynamic imports are not detected.
 - **Context sources.** LinkWatch is not indexed in DeepWiki, and Google Code Wiki works only through manual import.
-- **Review mode is in development** (see above).
+- **Review mode is static plus test-driven.** The call graph is name-based: dynamic dispatch, `getattr` and callbacks are missed, which is why coverage contexts are merged in and single-source items are marked uncertain. Behaviour replay only covers pure module-level functions whose arguments the existing tests pass and that can be pickled.
+- **Layer rules** use a small `pr-analyser.toml` format (`[[forbid]] source/target`), not import-linter contracts. They are read from the base commit so a PR cannot relax its own rules.
 
 ---
 
 ## Roadmap
 
-- Run on 5 to 10 more Python repos with a scoreboard for precision, recall, fix success rate and time.
-- Council ablation: one prompt versus three voters versus three voters plus adjudicator.
-- Docker isolation with network-off test runs.
-- OSV security advisories, transitive dependencies and behaviour diffs between major versions.
-- Deterministic migration recipes for known upgrades such as Pydantic v1 to v2.
-- Reuse failed patches across runs, and a GitHub Action that opens PRs with the capsule attached.
+"Built" means implemented and covered by tests in `tests_agent/` (fake model provider, real git, venvs and pytest). The last column says where it has run for real.
+
+| Feature | Status | Evidence |
+|---|---|---|
+| Maintenance mode (scan, councils, repair, verifier, two human gates) | Built | LinkWatch runs in `demo/` |
+| Review mode: base vs head on the same verifier, `REGRESSION` detection | Built | Fixture repos + LinkWatch end-to-end run (below) |
+| Blast radius: static call graph + Graphify + per-test coverage, uncertain marking, coverage % | Built | Fixture repos + LinkWatch run |
+| Running only affected tests (`--full-suite` to opt out) | Built | Fixture repos + LinkWatch run |
+| Structural checks: griffe API diff, likely renames, new import cycles, layer rules, packaging | Built | Fixture repos (rename, changed default, cycle, layer rule) + LinkWatch run |
+| Decision log with artifact-checked reasons, secret scrubbing, cross-run memory, expiry | Built | Unit tests + fake-provider repair flow; not yet exercised across two real model repairs |
+| Verdicts and capsule update (`capsule.md` + `capsule.json`) | Built | Fixture repos + LinkWatch run |
+| Differential behaviour testing (recorded inputs replayed on base and head) | Built | Fixture repo; on LinkWatch the blast radius had no pure function, so nothing was replayed |
+| AI-generated tests in `.resilience/generated_tests/` (must pass on base) | In progress | Works with the fake provider; not yet shown with the real 3B model |
+| AI review of intent (one call, cannot change the verdict) | Built | Fake provider + one real qwen2.5-coder:3b run on LinkWatch |
+| Dashboard Review tab | Built | Headless Streamlit AppTest render of the LinkWatch review |
+| import-linter contracts | Planned | A minimal `pr-analyser.toml` rule format is used instead |
+| Run on 5 to 10 more Python repos with a precision / recall / time scoreboard | Planned | |
+| Council ablation: one prompt vs three voters vs three voters plus adjudicator | Planned | |
+| Docker isolation with network-off test runs | Planned | |
+| OSV security advisories, transitive dependencies | Planned | |
+| Deterministic migration recipes (e.g. Pydantic v1 to v2) | Planned | |
+| GitHub Action that runs review mode on PRs and attaches the capsule | Planned | |
 
 ---
 

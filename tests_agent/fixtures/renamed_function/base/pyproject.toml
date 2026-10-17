@@ -1,0 +1,7 @@
+[project]
+name = "pkg"
+version = "0.1"
+[project.scripts]
+pkgcli = "pkg.cli:main"
+[tool.setuptools]
+packages = ["pkg"]
