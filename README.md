@@ -113,6 +113,7 @@ PR Analyser uses automated checks to evaluate proposed repairs. A successful tes
 
 Repair quality can vary depending on the selected model, available repository context, dependency complexity, and test coverage. Human review remains an important part of the process.
 
+- **Multi-Agent Review Council**: Runs three independent AI voters (Discovery, Skeptic, and Evidence) alongside an adjudicator to cross-examine and rank detected issues. Deterministic code rules automatically override AI consensus to eliminate false positives and hallucinations.
 
 
 
