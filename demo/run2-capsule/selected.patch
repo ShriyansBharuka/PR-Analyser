@@ -1,0 +1,13 @@
+diff --git a/requirements.txt b/requirements.txt
+index 6d525b7..f93cff5 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -2,7 +2,7 @@ toml==0.10.2
+ appdirs==1.4.4
+ requests==2.31.0
+ Jinja2==2.11.3
+-pydantic==1.10.13
++pydantic>=2
+ click>=7
+ six
+ chardet==5.2.0

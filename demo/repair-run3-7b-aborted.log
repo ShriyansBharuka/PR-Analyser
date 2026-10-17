@@ -1,0 +1,5 @@
+[gate 1] approved by maintainer; scope = ['jinja2', 'pydantic']
+[repair] previous run archived as RA-pydantic@archived-2026-10-15T08:45:52+00:00
+[repair] proposer A (minimal) ...
+[repair]   A: edits rejected by validator (1 problem(s)); asking for a correction
+(stopped by operator at 14:31: qwen2.5-coder:7b took 12 min for one proposer call on this CPU-only laptop; full run would exceed the deadline)

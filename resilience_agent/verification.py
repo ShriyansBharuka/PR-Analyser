@@ -22,13 +22,15 @@ SECRET_ENV = re.compile(r"TOKEN|SECRET|PASSWORD|PASSWD|CREDENTIAL|API_?KEY|AUTH|
 SECRET_TEXT = re.compile(r"gh[pousr]_[A-Za-z0-9]{20,}|github_pat_\w{20,}|sk-[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}"
                          r"|xox[abprs]-[\w-]{10,}|(?i:bearer)\s+[\w.~+/=-]{16,}"
                          r"|-----BEGIN [A-Z ]*PRIVATE KEY-----[\s\S]*?-----END [A-Z ]*PRIVATE KEY-----")
+# narrower than SECRET_ENV on purpose: session/auth *identifiers* appear in paths and are not secrets
+SECRET_TEXT_ENV = re.compile(r"TOKEN|SECRET|PASSWORD|PASSWD|CREDENTIAL|API_?KEY|COOKIE|PRIVATE_?KEY", re.I)
 SECRET_ASSIGN = re.compile(r"(?i)\b(password|passwd|secret|token|api[_-]?key)(\s*[=:]\s*)([^\s\"',]+)")
 
 
 def scrub(text):
     """Redact secrets from text before it is persisted: values of secret-named env vars, then known token shapes."""
     for k, v in os.environ.items():
-        if SECRET_ENV.search(k) and len(v) >= 12:  # short values (SESSIONNAME=Console on Windows) are not secrets
+        if SECRET_TEXT_ENV.search(k) and len(v) >= 12:  # short values are not secrets
             text = text.replace(v, "[REDACTED]")
     return SECRET_ASSIGN.sub(r"\1\2[REDACTED]", SECRET_TEXT.sub("[REDACTED]", text))
 

@@ -1,0 +1,36 @@
+[inspect] E:\Projects\PR Analyser @ 034624015e70 (feat/dependency-exit-scanners), 10 uncommitted file(s)
+[index] repo E:\Projects\PR Analyser @ 034624015e70 (feat/dependency-exit-scanners)
+[index] 15 modules, 14 declared deps, 16 imported/declared packages
+[index] DeepWiki (linkwatch-maintainer/resilience_agent): not_indexed
+[index] Code Wiki: not_imported
+[index] Graphify: ready
+[index] 169 facts stored; artifacts in E:\Projects\PR Analyser\.resilience\artifacts\index\034624015e70
+[baseline] reusing stored baseline for 034624015e70
+[baseline] gate passed: False; failures: 12
+[candidates] 13: RA-jinja2(42), RA-pydantic(37), RA-setuptools(10), RA-pkg_resources(9), RA-requests(4), RA-idna(3), RA-appdirs(2), RA-certifi(2), 
+RA-chardet(2), RA-toml(2), RA-nose(1), RA-python-dateutil(1), RA-six(1)
+[council] voter discovery judging 4 candidates ...
+[council]   discovery: RA-jinja2=real_issue, RA-pydantic=real_issue, RA-setuptools=real_issue, RA-pkg_resources=real_issue (157.0s)
+[council] voter skeptic judging 4 candidates ...
+[council]   skeptic: RA-jinja2=not_an_issue, RA-pydantic=not_an_issue, RA-setuptools=not_an_issue, RA-pkg_resources=not_an_issue (166.2s)
+[council] voter evidence judging 4 candidates ...
+[council]   evidence: RA-jinja2=not_an_issue, RA-pydantic=not_an_issue, RA-setuptools=not_an_issue, RA-pkg_resources=not_an_issue (121.8s)
+[council] adjudicator consolidating votes ...
+                                                    Maintenance issues (council + evidence rules)                                                    
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+| id                 | classification      | severity | reproduction   | votes D/S/E  | approval | title                                            |
+|--------------------+---------------------+----------+----------------+--------------+----------+--------------------------------------------------|
+| RA-jinja2          | SUPPORTED           | medium   | reproduced     | real/no/no   | pending  | Real Issue                                       |
+| RA-pydantic        | SUPPORTED           | medium   | reproduced     | real/no/no   | pending  | Real Issue                                       |
+| RA-setuptools      | SUPPORTED           | medium   | not_reproduced | real/no/no   | pending  | Real Issue                                       |
+| RA-pkg_resources   | SUPPORTED           | medium   | not_reproduced | real/no/no   | pending  | Real Issue                                       |
+| RA-requests        | NEEDS_INVESTIGATION | low      | not_attempted  | not reviewed | pending  | requests: compatibility, fragile-api, outdated   |
+| RA-idna            | NEEDS_INVESTIGATION | low      | not_attempted  | not reviewed | pending  | idna: compatibility, outdated, unused-dependency |
+| RA-appdirs         | NEEDS_INVESTIGATION | low      | not_attempted  | not reviewed | pending  | appdirs: compatibility, maintenance              |
+| RA-certifi         | NEEDS_INVESTIGATION | low      | not_attempted  | not reviewed | pending  | certifi: undeclared-dependency                   |
+| RA-chardet         | NEEDS_INVESTIGATION | low      | not_attempted  | not reviewed | pending  | chardet: compatibility, outdated                 |
+| RA-toml            | NEEDS_INVESTIGATION | low      | not_attempted  | not reviewed | pending  | toml: compatibility, maintenance                 |
+| RA-nose            | NEEDS_INVESTIGATION | low      | not_attempted  | not reviewed | pending  | nose: maintenance, tooling                       |
+| RA-python-dateutil | NEEDS_INVESTIGATION | low      | not_attempted  | not reviewed | pending  | python-dateutil: maintenance                     |
+| RA-six             | NEEDS_INVESTIGATION | low      | not_attempted  | not reviewed | pending  | six: unused-dependency                           |
++---------------------------------------------------------------------------------------------------------------------------------------------------+

@@ -1,0 +1,65 @@
+[gate 1] approved by maintainer; scope = ['jinja2']
+[repair] previous run archived as RA-jinja2@archived-2026-10-15T10:04:38+00:00
+[repair] proposer A (minimal) ...
+[repair]   A1: valid=True files=['pyproject.toml'] []
+[repair] proposer B (migration) ...
+[repair]   B1: valid=True files=['pyproject.toml'] []
+[repair] proposer C (alternative) ...
+[repair]   C1: valid=True files=['requirements.txt', 'pyproject.toml'] []
+[repair] reviewer A reviewing Proposal-P, Proposal-Q ...
+[repair] reviewer B reviewing Proposal-Q, Proposal-R ...
+[repair] reviewer C reviewing Proposal-P, Proposal-R ...
+[repair] 6 anonymous reviews collected
+[repair] ranking: B1=4.633, C1=4.567, A1=4.533
+[apply] B1 committed on ra/RA-jinja2-B1 in E:\Projects\PR Analyser\.resilience\worktrees\RA-jinja2-B1
+[verify:RA-jinja2-B1-attempt1] python 3.12 / install via requirements
+[verify:RA-jinja2-B1-attempt1]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, acceptance=FAIL
+[verify:RA-jinja2-B1-attempt1] python 3.12 / install via package
+[verify:RA-jinja2-B1-attempt1]   failed: install=ok, dependency_conflicts=ok, import_smoke=ok, cli_help:linkwatch=ok, pytest=ok, acceptance=FAIL
+[verify:RA-jinja2-B1-attempt1] python 3.13 / install via requirements
+[verify:RA-jinja2-B1-attempt1]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, acceptance=FAIL
+[verify:RA-jinja2-B1-attempt1] python 3.13 / install via package
+[verify:RA-jinja2-B1-attempt1]   failed: install=ok, dependency_conflicts=ok, import_smoke=ok, cli_help:linkwatch=ok, pytest=ok, acceptance=FAIL
+[verify] B1 gate FAILED: ['4 issue target test run(s) still fail', "install paths still resolve different versions: py3.12 jinja2: {'requirements': 
+'2.11.3', 'package': '3.1.6'}; py3.13 jinja2: {'requirements': '2.11.3', 'package': '3.1.6'}"]; fully green: False; weights -> {'A': 0.9, 'B': 0.6, 
+'C': 0.9}
+[retry] attempt 1 failed; feeding verifier evidence back to proposer B
+[repair] proposer B (migration) revising ...
+[retry] new candidate B2 valid=True []
+[repair] reviewer A reviewing Proposal-P, Proposal-R ...
+[repair] reviewer B reviewing Proposal-Q, Proposal-R ...
+[repair] reviewer C reviewing Proposal-P, Proposal-Q ...
+[repair] ranking: A1=4.129, C1=4.044, B2=3.283
+[apply] A1 committed on ra/RA-jinja2-A1 in E:\Projects\PR Analyser\.resilience\worktrees\RA-jinja2-A1
+[verify:RA-jinja2-A1-attempt2] python 3.12 / install via requirements
+[verify:RA-jinja2-A1-attempt2]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, acceptance=FAIL
+[verify:RA-jinja2-A1-attempt2] python 3.12 / install via package
+[verify:RA-jinja2-A1-attempt2]   failed: install=ok, dependency_conflicts=ok, import_smoke=ok, cli_help:linkwatch=ok, pytest=ok, acceptance=FAIL
+[verify:RA-jinja2-A1-attempt2] python 3.13 / install via requirements
+[verify:RA-jinja2-A1-attempt2]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, acceptance=FAIL
+[verify:RA-jinja2-A1-attempt2] python 3.13 / install via package
+[verify:RA-jinja2-A1-attempt2]   failed: install=ok, dependency_conflicts=ok, import_smoke=ok, cli_help:linkwatch=ok, pytest=ok, acceptance=FAIL
+[verify] A1 gate FAILED: ['4 issue target test run(s) still fail', "install paths still resolve different versions: py3.12 jinja2: {'requirements': 
+'2.11.3', 'package': '3.1.6'}; py3.13 jinja2: {'requirements': '2.11.3', 'package': '3.1.6'}"]; fully green: False; weights -> {'A': 0.5, 'B': 0.4, 
+'C': 0.7}
+[retry] attempt 2 failed; feeding verifier evidence back to proposer A
+[repair] proposer A (minimal) revising ...
+[retry] new candidate A2 valid=True []
+[repair] reviewer A reviewing Proposal-P, Proposal-Q ...
+[repair] reviewer B reviewing Proposal-P, Proposal-R ...
+[repair] reviewer C reviewing Proposal-Q, Proposal-R ...
+[repair] ranking: C1=4.037, B2=3.385, A2=3.273
+[apply] C1 committed on ra/RA-jinja2-C1 in E:\Projects\PR Analyser\.resilience\worktrees\RA-jinja2-C1
+[verify:RA-jinja2-C1-attempt3] python 3.12 / install via requirements
+[verify:RA-jinja2-C1-attempt3]   passed: install=ok, dependency_conflicts=ok, import_smoke=ok, cli_help:linkwatch=ok, pytest=ok, acceptance=ok
+[verify:RA-jinja2-C1-attempt3] python 3.12 / install via package
+[verify:RA-jinja2-C1-attempt3]   failed: install=ok, dependency_conflicts=ok, import_smoke=ok, cli_help:linkwatch=ok, pytest=ok, acceptance=FAIL
+[verify:RA-jinja2-C1-attempt3] python 3.13 / install via requirements
+[verify:RA-jinja2-C1-attempt3]   passed: install=ok, dependency_conflicts=ok, import_smoke=ok, cli_help:linkwatch=ok, pytest=ok, acceptance=ok
+[verify:RA-jinja2-C1-attempt3] python 3.13 / install via package
+[verify:RA-jinja2-C1-attempt3]   failed: install=ok, dependency_conflicts=ok, import_smoke=ok, cli_help:linkwatch=ok, pytest=ok, acceptance=FAIL
+[verify] C1 gate PASSED: all criteria met; fully green: False; weights -> {'A': 0.6, 'B': 0.7, 'C': 0.9}
+[capsule] VERIFIED_RESOLUTION -> E:\Projects\PR Analyser\.resilience\artifacts\capsules\RA-jinja2
+[gate 2] verified patch on ra/RA-jinja2-C1 waits for publication approval (python -m resilience_agent publish RA-jinja2 | reject-publication)
+status: verified_resolution  waiting at: [{'gate': 'publication', 'issue_id': 'RA-jinja2', 'branch': 'ra/RA-jinja2-C1'}]
+capsule: E:\Projects\PR Analyser\.resilience\artifacts\capsules\RA-jinja2

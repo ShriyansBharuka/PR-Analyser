@@ -1,0 +1,30 @@
+[gate 1] approved by maintainer; scope = ['jinja2']
+[repair] proposer A (minimal) ...
+[repair]   A1: valid=True files=['requirements.txt', 'pyproject.toml'] []
+[repair] proposer B (migration) ...
+[repair]   B: edits rejected by validator (1 problem(s)); asking for a correction
+[repair]   B1: valid=True files=['pyproject.toml'] []
+[repair] proposer C (alternative) ...
+[repair]   C1: valid=True files=['pyproject.toml'] []
+[repair] reviewer A reviewing Proposal-P, Proposal-Q ...
+[repair] reviewer B reviewing Proposal-Q, Proposal-R ...
+[repair] reviewer C reviewing Proposal-P, Proposal-R ...
+[repair] 0 anonymous reviews collected
+[repair] ranking: B1=0.0, C1=0.0, A1=0.0
+[apply] B1 committed on ra/RA-jinja2-B1 in E:\Projects\PR Analyser\.resilience\worktrees\RA-jinja2-B1
+[verify:RA-jinja2-B1-attempt1] python 3.12 / install via requirements
+[verify:RA-jinja2-B1-attempt1]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, acceptance=FAIL
+[verify:RA-jinja2-B1-attempt1] python 3.12 / install via package
+[verify:RA-jinja2-B1-attempt1]   failed: install=ok, dependency_conflicts=ok, import_smoke=ok, cli_help:linkwatch=ok, pytest=ok, acceptance=FAIL
+[verify:RA-jinja2-B1-attempt1] python 3.13 / install via requirements
+[verify:RA-jinja2-B1-attempt1]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, acceptance=FAIL
+[verify:RA-jinja2-B1-attempt1] python 3.13 / install via package
+[verify:RA-jinja2-B1-attempt1]   failed: install=ok, dependency_conflicts=ok, import_smoke=ok, cli_help:linkwatch=ok, pytest=ok, acceptance=FAIL
+[verify] B1 gate FAILED: ['4 issue target test run(s) still fail', "install paths still resolve different versions: py3.13 jinja2: {'requirements': 
+'2.11.3', 'package': '3.1.6'}; py3.12 jinja2: {'requirements': '2.11.3', 'package': '3.1.6'}"]; fully green: False; weights -> {'A': 1.0, 'B': 0.6, 
+'C': 1.0}
+[retry] attempt 1 failed; feeding verifier evidence back to proposer B
+[repair] proposer B (migration) revising ...
+[retry] new candidate B2 valid=True []
+[repair] reviewer A reviewing Proposal-P, Proposal-R ...
+(stopped by operator at 15:34: reviewer-label bug discarded all reviews, so ranking fell back to smallest diff; fixed in b597b8b, restarted as run 2)

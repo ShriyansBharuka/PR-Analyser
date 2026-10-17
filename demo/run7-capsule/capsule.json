@@ -1,0 +1,1342 @@
+{
+  "capsule_version": 1,
+  "generated_at": "2026-10-15T11:09:05+00:00",
+  "issue_id": "RA-pydantic",
+  "status": "NO_VERIFIED_SOLUTION",
+  "maintainer_status": "awaiting maintainer decision",
+  "repository": {
+    "path": "E:\\Projects\\PR Analyser",
+    "remote": "https://github.com/linkwatch-maintainer/resilience_agent.git",
+    "baseline_commit": "034624015e7087bd6a1a7747830a21d4276e95ce",
+    "branch": "feat/dependency-exit-scanners"
+  },
+  "models": [
+    {
+      "provider": "ollama",
+      "model": "qwen2.5-coder:3b",
+      "digest": null,
+      "fake": false
+    }
+  ],
+  "OBSERVED": {
+    "original_dependencies": {
+      "jinja2": {
+        "declarations": [
+          {
+            "file": "requirements.txt",
+            "line": 4,
+            "group": "requirements",
+            "name": "Jinja2",
+            "extras": "",
+            "spec": "==2.11.3",
+            "marker": ""
+          },
+          {
+            "file": "pyproject.toml",
+            "line": 16,
+            "group": "project",
+            "name": "Jinja2",
+            "extras": "",
+            "spec": "==2.11.3",
+            "marker": ""
+          }
+        ],
+        "pinned": "2.11.3",
+        "pypi": {
+          "latest_version": "3.1.6",
+          "latest_version_date": "2025-03-05T20:05:00.369721Z",
+          "last_release_date": "2025-03-05T20:05:00.369721Z",
+          "days_since_last_release": 588,
+          "total_releases": 52,
+          "latest_requires_python": ">=3.7",
+          "summary": "A very fast and expressive template engine.",
+          "project_urls": {
+            "Changes": "https://jinja.palletsprojects.com/changes/",
+            "Chat": "https://discord.gg/pallets",
+            "Documentation": "https://jinja.palletsprojects.com/",
+            "Donate": "https://palletsprojects.com/donate",
+            "Source": "https://github.com/pallets/jinja/"
+          },
+          "pinned_version": "2.11.3",
+          "pinned_found_on_pypi": true,
+          "pinned_release_date": "2021-01-31T16:33:07.289264Z",
+          "releases_since_pinned": 13,
+          "pinned_yanked": false,
+          "pinned_requires_python": ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*",
+          "python_classifiers": [
+            "3.5",
+            "3.6",
+            "3.7",
+            "3.8"
+          ],
+          "development_status": "5 - Production/Stable",
+          "project_status": "active"
+        },
+        "risk_flags": {
+          "exact_pin": true,
+          "unpinned": false,
+          "specs_differ": false,
+          "pinned_behind_latest": true,
+          "stale_last_release": false,
+          "pinned_yanked": false,
+          "pinned_not_on_pypi": false,
+          "status_not_active": false,
+          "python_classifiers_older_than_target": true
+        }
+      },
+      "pydantic": {
+        "declarations": [
+          {
+            "file": "requirements.txt",
+            "line": 5,
+            "group": "requirements",
+            "name": "pydantic",
+            "extras": "",
+            "spec": "==1.10.13",
+            "marker": ""
+          },
+          {
+            "file": "pyproject.toml",
+            "line": 17,
+            "group": "project",
+            "name": "pydantic",
+            "extras": "",
+            "spec": ">=2",
+            "marker": ""
+          }
+        ],
+        "pinned": "1.10.13",
+        "pypi": {
+          "latest_version": "2.14.1",
+          "latest_version_date": "2026-10-11T18:37:53.437059Z",
+          "last_release_date": "2026-10-11T18:37:53.437059Z",
+          "days_since_last_release": 3,
+          "total_releases": 208,
+          "latest_requires_python": ">=3.10",
+          "summary": "Data validation using Python type hints",
+          "project_urls": {
+            "Changelog": "https://pydantic.dev/docs/validation/latest/get-started/changelog/",
+            "Documentation": "https://pydantic.dev/docs/validation/latest/get-started/",
+            "Funding": "https://github.com/sponsors/samuelcolvin",
+            "Homepage": "https://github.com/pydantic/pydantic",
+            "Source": "https://github.com/pydantic/pydantic"
+          },
+          "pinned_version": "1.10.13",
+          "pinned_found_on_pypi": true,
+          "pinned_release_date": "2023-09-27T17:43:07.172408Z",
+          "releases_since_pinned": 86,
+          "pinned_yanked": false,
+          "pinned_requires_python": ">=3.7",
+          "python_classifiers": [
+            "3.7",
+            "3.8",
+            "3.9",
+            "3.10",
+            "3.11"
+          ],
+          "development_status": "5 - Production/Stable",
+          "project_status": "active"
+        },
+        "risk_flags": {
+          "exact_pin": true,
+          "unpinned": false,
+          "specs_differ": true,
+          "pinned_behind_latest": true,
+          "stale_last_release": false,
+          "pinned_yanked": false,
+          "pinned_not_on_pypi": false,
+          "status_not_active": false,
+          "python_classifiers_older_than_target": true
+        }
+      }
+    },
+    "usage_sites": {
+      "jinja2": [
+        {
+          "file": "linkwatch/report.py",
+          "line": 3,
+          "code": "from jinja2 import Environment, FileSystemLoader, select_autoescape"
+        }
+      ],
+      "pydantic": [
+        {
+          "file": "linkwatch/config.py",
+          "line": 4,
+          "code": "from pydantic import BaseModel, validator"
+        }
+      ]
+    },
+    "api_symbols": {
+      "jinja2": [
+        "jinja2.Environment",
+        "jinja2.FileSystemLoader",
+        "jinja2.select_autoescape"
+      ],
+      "pydantic": [
+        "pydantic.BaseModel",
+        "pydantic.validator"
+      ]
+    },
+    "issue_evidence": [
+      {
+        "kind": "source",
+        "text": "declared as pydantic==1.10.13 [requirements]",
+        "source": "requirements.txt:5",
+        "id": "E1"
+      },
+      {
+        "kind": "source",
+        "text": "declared as pydantic>=2 [project]",
+        "source": "pyproject.toml:17",
+        "id": "E2"
+      },
+      {
+        "kind": "source",
+        "text": "version specs differ between manifests: requirements.txt '==1.10.13'; pyproject.toml '>=2'",
+        "source": "scan_deps.py",
+        "id": "E3"
+      },
+      {
+        "kind": "metadata",
+        "text": "pinned 1.10.13 while latest is 2.14.1 (86 releases since the pin)",
+        "source": "https://pypi.org/project/pydantic/",
+        "id": "E4"
+      },
+      {
+        "kind": "metadata",
+        "text": "newest Python classifier of the used version is 3.11 (target 3.12)",
+        "source": "https://pypi.org/project/pydantic/",
+        "id": "E5"
+      },
+      {
+        "kind": "executed",
+        "text": "PydanticDeprecatedSince20 in py3.12/package at config.py:20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecate",
+        "source": "pytest warnings summary",
+        "id": "E6"
+      },
+      {
+        "kind": "executed",
+        "text": "PydanticDeprecatedSince20 in py3.12/package at config.py:7: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydanti",
+        "source": "pytest warnings summary",
+        "id": "E7"
+      },
+      {
+        "kind": "executed",
+        "text": "UserWarning in py3.12/package at _config.py:408: Valid config keys have changed in V2: * 'anystr_strip_whitespace' has been renamed to 'str_strip_whitespace'",
+        "source": "pytest warnings summary",
+        "id": "E8"
+      },
+      {
+        "kind": "executed",
+        "text": "PydanticDeprecatedSince20 in py3.12/package at config.py:27: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydanti",
+        "source": "pytest warnings summary",
+        "id": "E9"
+      },
+      {
+        "kind": "executed",
+        "text": "DeprecationWarning in py3.13/requirements at typing.py:400: Failing to pass a value to the 'type_params' parameter of 'typing._eval_type' is deprecated, as it leads to incorrect behaviour when calling typing._eval_type on a stringified anno",
+        "source": "pytest warnings summary",
+        "id": "E10"
+      },
+      {
+        "kind": "executed",
+        "text": "py3.12: installing via requirements resolves pydantic==1.10.13, via package resolves pydantic==2.14.1",
+        "source": "uv pip freeze in both venvs",
+        "id": "E11"
+      },
+      {
+        "kind": "executed",
+        "text": "py3.12: test test_whitespace_is_stripped_from_site_fields is passed via requirements but failed via package (pydantic_core._pydantic_core.ValidationError: 1 validation error for Site\nurl\n  Value error, url must start with http:// or https:// [type=value_error, input_value='  https://example.com  ', input_typ)",
+        "source": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\baseline-034624015e70\\logs\\012-acceptance-3.12-package.log",
+        "id": "E12"
+      }
+    ]
+  },
+  "AI": {
+    "discovery_votes": {
+      "discovery": {
+        "candidate_id": "RA-pydantic",
+        "verdict": "real_issue",
+        "severity": "medium",
+        "rationale": "Pydantic version inconsistency and deprecated API usage in py3.12, which could lead to runtime errors.",
+        "cited_evidence": [],
+        "counterevidence": [],
+        "missing_evidence": []
+      },
+      "skeptic": {
+        "candidate_id": "RA-pydantic",
+        "verdict": "not_an_issue",
+        "severity": "medium",
+        "rationale": "The warnings are about deprecated features in Pydantic V1, which are not a problem for Pydantic V2. The version mismatch is due to the project's dependency on Pydantic V2, not a problem with Pydantic itself.",
+        "cited_evidence": [],
+        "counterevidence": [],
+        "missing_evidence": []
+      },
+      "evidence": {
+        "candidate_id": "RA-pydantic",
+        "verdict": "not_an_issue",
+        "severity": "medium",
+        "rationale": "No runtime failures or compatibility issues found.",
+        "cited_evidence": [],
+        "counterevidence": [],
+        "missing_evidence": []
+      }
+    },
+    "adjudication": {
+      "proposed_classification": "SUPPORTED",
+      "rationale": "Pydantic version mismatch and deprecated features in Pydantic V1, which are not a problem for Pydantic V2. The version mismatch is due to the project's dependency on Pydantic V2, not a problem with Pydantic itself.",
+      "uncertainties": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "disagreements": [],
+      "cited_evidence": [
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E10"
+      ],
+      "rule_notes": [
+        "votes citing no evidence carry no evidential weight: discovery, skeptic, evidence"
+      ]
+    },
+    "candidates": [
+      {
+        "cand_id": "A1",
+        "strategy_name": "minimal",
+        "valid": true,
+        "problems": [],
+        "status": "failed",
+        "score": null,
+        "diagnosis": "The issue is caused by the mismatch between the declared versions of pydantic in `requirements.txt` and `pyproject.toml`. Additionally, the deprecated API usage in `linkwatch/config.py` is causing runtime errors.",
+        "solution": "To resolve this, we need to align the versions of pydantic in both `requirements.txt` and `pyproject.toml` to a single version and update the code to use the new API.",
+        "risks": [],
+        "tests_needed": [],
+        "compatibility": ""
+      },
+      {
+        "cand_id": "B1",
+        "strategy_name": "migration",
+        "valid": true,
+        "problems": [],
+        "status": "proposed",
+        "score": null,
+        "diagnosis": "The issue is due to the incompatibility between the pydantic version declared in the requirements.txt and pyproject.toml files. The pydantic version in requirements.txt is 1.10.13, while the version in pyproject.toml is >=2. Additionally, the pydantic version used in the code is v1, but the code uses v2 features which are not supported in v1. This leads to runtime errors and test failures.",
+        "solution": "To fix this issue, we need to update the pydantic version in both manifests to the same version, and also update the code to use the correct pydantic v2 features.",
+        "risks": [],
+        "tests_needed": [],
+        "compatibility": ""
+      },
+      {
+        "cand_id": "C1",
+        "strategy_name": "alternative",
+        "valid": false,
+        "problems": [
+          "linkwatch/config.py: find text occurs 2 times (must be exactly once): 'class Config:'",
+          "linkwatch/config.py: find text occurs 2 times (must be exactly once): 'class Config:'",
+          "requirements.txt: find text occurs 0 times (must be exactly once): 'pydantic>=2'",
+          "pydantic: manifests disagree after your edits - requirements.txt:5 'pydantic==1.10.13'; pyproject.toml:17 'pydantic==2.14.1'. Every manifest declaring it must use the same version spec."
+        ],
+        "status": "invalid",
+        "score": null,
+        "diagnosis": "The issue is due to the inconsistency between the declared versions of pydantic in `requirements.txt` and `pyproject.toml`, and the deprecation of certain features in pydantic 2.0. The current approach of pinning pydantic to 2.x in both manifests is causing compatibility issues and runtime errors.",
+        "solution": "The solution is to either keep pydantic v1 everywhere or migrate linkwatch/config.py to the v2 API. We will choose the second approach as it provides a more robust and future-proof solution.",
+        "risks": [],
+        "tests_needed": [],
+        "compatibility": ""
+      },
+      {
+        "cand_id": "A2",
+        "strategy_name": "minimal",
+        "valid": false,
+        "problems": [
+          "identical to A1, which already failed verification"
+        ],
+        "status": "invalid",
+        "score": null,
+        "diagnosis": "The issue arises from mismatched versions of the scoped dependency `pydantic` declared in `requirements.txt` and `pyproject.toml`. The code should be updated to use the same pydantic version in both manifests.",
+        "solution": "Align the declared versions of `pydantic` in both `requirements.txt` and `pyproject.toml` to ensure consistency.",
+        "risks": [],
+        "tests_needed": [],
+        "compatibility": ""
+      }
+    ],
+    "peer_reviews": [
+      {
+        "reviewer": "A",
+        "cand_id": "B1",
+        "proposal_label": "Proposal-P",
+        "verdict": "accept",
+        "scores": {
+          "correctness": 5,
+          "compatibility": 5,
+          "python_support": 5,
+          "regression_risk": 5,
+          "maintainability": 5,
+          "test_coverage": 5,
+          "complexity": 5,
+          "safety": 5,
+          "evidence": 5
+        },
+        "defects": [],
+        "summary": "The proposal addresses the issue by updating the pydantic version in both manifests to the same version and updating the code to use the correct pydantic v2 features. The changes are correct, compatible, and maintainable, and the test coverage is high. The regression risk is low as the changes are only to the pydantic version and the code, and the test failures are due to the incompatibility between the pydantic version declared in the manifests. The proposal is accepted."
+      },
+      {
+        "reviewer": "B",
+        "cand_id": "A1",
+        "proposal_label": "Proposal-Q",
+        "verdict": "accept",
+        "scores": {
+          "correctness": 5,
+          "compatibility": 5,
+          "python_support": 5,
+          "regression_risk": 5,
+          "maintainability": 5,
+          "test_coverage": 5,
+          "complexity": 5,
+          "safety": 5,
+          "evidence": 5
+        },
+        "defects": [],
+        "summary": "The proposal addresses the mismatch between pydantic versions in `requirements.txt` and `pyproject.toml` and updates the code to use the new API. The changes are correct, compatible, and maintainable."
+      },
+      {
+        "reviewer": "C",
+        "cand_id": "B1",
+        "proposal_label": "Proposal-P",
+        "verdict": "reject",
+        "scores": {
+          "correctness": 3,
+          "compatibility": 4,
+          "python_support": 3,
+          "regression_risk": 4,
+          "maintainability": 3,
+          "test_coverage": 4,
+          "complexity": 3,
+          "safety": 3,
+          "evidence": 4
+        },
+        "defects": [
+          "The proposed solution does not address the issue of deprecated API usage in `linkwatch/config.py`. The code should be updated to use the new v2 API."
+        ],
+        "summary": "The proposed solution does not fully address the issue of deprecated API usage in `linkwatch/config.py`. The code should be updated to use the new v2 API."
+      },
+      {
+        "reviewer": "C",
+        "cand_id": "A1",
+        "proposal_label": "Proposal-Q",
+        "verdict": "reject",
+        "scores": {
+          "correctness": 3,
+          "compatibility": 4,
+          "python_support": 3,
+          "regression_risk": 4,
+          "maintainability": 3,
+          "test_coverage": 4,
+          "complexity": 3,
+          "safety": 3,
+          "evidence": 4
+        },
+        "defects": [
+          "The proposed solution does not address the issue of mismatch between the declared versions of pydantic in `requirements.txt` and `pyproject.toml`. The code should be updated to use the same pydantic version in both manifests."
+        ],
+        "summary": "The proposed solution does not fully address the issue of mismatch between the declared versions of pydantic in `requirements.txt` and `pyproject.toml`. The code should be updated to use the same pydantic version in both manifests."
+      }
+    ],
+    "ranking_history": [
+      [
+        {
+          "cand_id": "A1",
+          "score": 3.908,
+          "reviews": 2,
+          "diff_lines": 22,
+          "proposer_weight": 1.0
+        },
+        {
+          "cand_id": "B1",
+          "score": 3.908,
+          "reviews": 2,
+          "diff_lines": 22,
+          "proposer_weight": 1.0
+        }
+      ],
+      []
+    ],
+    "voter_weights_history": [
+      {
+        "A": 0.6,
+        "B": 0.9,
+        "C": 1.1
+      }
+    ]
+  },
+  "VERIFIED": {
+    "baseline": {
+      "gate": {
+        "passed": false,
+        "failures": [
+          {
+            "python": "3.12",
+            "mode": "requirements",
+            "check": "import_smoke",
+            "exit_code": 1,
+            "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\baseline-034624015e70\\logs\\003-import-3.12-requirements.log",
+            "stderr_tail": "rojects\\PR Analyser\\.resilience\\worktrees\\baseline-034624015e70\\linkwatch\\report.py\", line 3, in <module>\n    from jinja2 import Environment, FileSystemLoader, select_autoescape\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-b12f1f0472d3\\Lib\\site-packages\\jinja2\\__init__.py\", line 12, in <module>\n    from .environment import Environment\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-b12f1f0472d3\\Lib\\site-packages\\jinja2\\environment.py\", line 25, in <module>\n    from .defaults import BLOCK_END_STRING\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-b12f1f0472d3\\Lib\\site-packages\\jinja2\\defaults.py\", line 3, in <module>\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-b12f1f0472d3\\Lib\\site-packages\\jinja2\\filters.py\", line 13, in <module>\n    from markupsafe import soft_unicode\nImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-b12f1f0472d3\\Lib\\site-packages\\markupsafe\\__init__.py)\n",
+            "stdout_tail": ""
+          },
+          {
+            "python": "3.12",
+            "mode": "requirements",
+            "check": "pytest",
+            "exit_code": 1,
+            "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\baseline-034624015e70\\logs\\005-pytest-3.12-requirements.log",
+            "stderr_tail": "",
+            "stdout_tail": "\"\"\n    import math\n    import random\n    import re\n    import warnings\n    from collections import namedtuple\n    from itertools import chain\n    from itertools import groupby\n    \n    from markupsafe import escape\n    from markupsafe import Markup\n>   from markupsafe import soft_unicode\nE   ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-b12f1f0472d3\\Lib\\site-packages\\markupsafe\\__init__.py)\n\n..\\..\\venvs\\py3.12-requirements-b12f1f0472d3\\Lib\\site-packages\\jinja2\\filters.py:13: ImportError\n============================== warnings summary ===============================\nlinkwatch\\resources.py:1\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\baseline-034624015e70\\linkwatch\\resources.py:1: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\n    import pkg_resources\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nFAILED tests/test_report.py::test_report_renders_all_sites - ImportError: can...\n1 failed, 9 passed, 1 warning in 8.76s\n"
+          },
+          {
+            "python": "3.12",
+            "mode": "requirements",
+            "check": "acceptance",
+            "exit_code": 1,
+            "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\baseline-034624015e70\\logs\\006-acceptance-3.12-requirements.log",
+            "stderr_tail": "",
+            "stdout_tail": "m .defaults import BLOCK_END_STRING\n..\\..\\venvs\\py3.12-requirements-b12f1f0472d3\\Lib\\site-packages\\jinja2\\defaults.py:3: in <module>\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\n    # -*- coding: utf-8 -*-\n    \"\"\"Built-in template filters used with the ``|`` operator.\"\"\"\n    import math\n    import random\n    import re\n    import warnings\n    from collections import namedtuple\n    from itertools import chain\n    from itertools import groupby\n    \n    from markupsafe import escape\n    from markupsafe import Markup\n>   from markupsafe import soft_unicode\nE   ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-b12f1f0472d3\\Lib\\site-packages\\markupsafe\\__init__.py)\n\n..\\..\\venvs\\py3.12-requirements-b12f1f0472d3\\Lib\\site-packages\\jinja2\\filters.py:13: ImportError\n=========================== short test summary info ===========================\nFAILED ..\\..\\..\\acceptance\\linkwatch\\test_acceptance.py::test_cache_round_trip_and_report\n1 failed, 10 passed in 1.03s\n"
+          },
+          {
+            "python": "3.12",
+            "mode": "package",
+            "check": "import_smoke",
+            "exit_code": 1,
+            "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\baseline-034624015e70\\logs\\009-import-3.12-package.log",
+            "stderr_tail": "ames_removed\n  File \"E:\\Projects\\PR Analyser\\.resilience\\worktrees\\baseline-034624015e70\\linkwatch\\report.py\", line 3, in <module>\n    from jinja2 import Environment, FileSystemLoader, select_autoescape\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-ac57452d75c0\\Lib\\site-packages\\jinja2\\__init__.py\", line 12, in <module>\n    from .environment import Environment\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-ac57452d75c0\\Lib\\site-packages\\jinja2\\environment.py\", line 25, in <module>\n    from .defaults import BLOCK_END_STRING\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-ac57452d75c0\\Lib\\site-packages\\jinja2\\defaults.py\", line 3, in <module>\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-ac57452d75c0\\Lib\\site-packages\\jinja2\\filters.py\", line 13, in <module>\n    from markupsafe import soft_unicode\nImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-ac57452d75c0\\Lib\\site-packages\\markupsafe\\__init__.py)\n",
+            "stdout_tail": ""
+          },
+          {
+            "python": "3.12",
+            "mode": "package",
+            "check": "pytest",
+            "exit_code": 1,
+            "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\baseline-034624015e70\\logs\\011-pytest-3.12-package.log",
+            "stderr_tail": "",
+            "stdout_tail": "ober KJSEE\\.resilience\\venvs\\py3.12-package-ac57452d75c0\\Lib\\site-packages\\pydantic\\_internal\\_config.py:408: UserWarning: Valid config keys have changed in V2:\n  * 'anystr_strip_whitespace' has been renamed to 'str_strip_whitespace'\n    warnings.warn(message, UserWarning)\n\nlinkwatch\\config.py:27\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\baseline-034624015e70\\linkwatch\\config.py:27: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/\n    class Settings(BaseModel):\n\nlinkwatch\\resources.py:1\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\baseline-034624015e70\\linkwatch\\resources.py:1: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\n    import pkg_resources\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nFAILED tests/test_report.py::test_report_renders_all_sites - ImportError: can...\n1 failed, 9 passed, 6 warnings in 9.64s\n"
+          },
+          {
+            "python": "3.12",
+            "mode": "package",
+            "check": "acceptance",
+            "exit_code": 1,
+            "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\baseline-034624015e70\\logs\\012-acceptance-3.12-package.log",
+            "stderr_tail": "",
+            "stdout_tail": "dev/2.14/migration/\n    class Site(BaseModel):\n\n..\\..\\venvs\\py3.12-package-ac57452d75c0\\Lib\\site-packages\\pydantic\\_internal\\_config.py:408\n  E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-ac57452d75c0\\Lib\\site-packages\\pydantic\\_internal\\_config.py:408: UserWarning: Valid config keys have changed in V2:\n  * 'anystr_strip_whitespace' has been renamed to 'str_strip_whitespace'\n    warnings.warn(message, UserWarning)\n\nlinkwatch\\config.py:27\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\baseline-034624015e70\\linkwatch\\config.py:27: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/\n    class Settings(BaseModel):\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nFAILED ..\\..\\..\\acceptance\\linkwatch\\test_acceptance.py::test_whitespace_is_stripped_from_site_fields\nFAILED ..\\..\\..\\acceptance\\linkwatch\\test_acceptance.py::test_cache_round_trip_and_report\n2 failed, 9 passed, 5 warnings in 0.92s\n"
+          },
+          {
+            "python": "3.13",
+            "mode": "requirements",
+            "check": "import_smoke",
+            "exit_code": 1,
+            "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\baseline-034624015e70\\logs\\015-import-3.13-requirements.log",
+            "stderr_tail": "rojects\\PR Analyser\\.resilience\\worktrees\\baseline-034624015e70\\linkwatch\\report.py\", line 3, in <module>\n    from jinja2 import Environment, FileSystemLoader, select_autoescape\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\jinja2\\__init__.py\", line 12, in <module>\n    from .environment import Environment\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\jinja2\\environment.py\", line 25, in <module>\n    from .defaults import BLOCK_END_STRING\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\jinja2\\defaults.py\", line 3, in <module>\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\jinja2\\filters.py\", line 13, in <module>\n    from markupsafe import soft_unicode\nImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\markupsafe\\__init__.py)\n",
+            "stdout_tail": ""
+          },
+          {
+            "python": "3.13",
+            "mode": "requirements",
+            "check": "pytest",
+            "exit_code": 1,
+            "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\baseline-034624015e70\\logs\\017-pytest-3.13-requirements.log",
+            "stderr_tail": "",
+            "stdout_tail": "a2\\filters.py:13: ImportError\n============================== warnings summary ===============================\n..\\..\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\pydantic\\typing.py:400\n  E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\pydantic\\typing.py:400: DeprecationWarning: Failing to pass a value to the 'type_params' parameter of 'typing._eval_type' is deprecated, as it leads to incorrect behaviour when calling typing._eval_type on a stringified annotation that references a PEP 695 type parameter. It will be disallowed in Python 3.15.\n    value = _eval_type(value, base_globals, None)\n\nlinkwatch\\resources.py:1\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\baseline-034624015e70\\linkwatch\\resources.py:1: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\n    import pkg_resources\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nFAILED tests/test_report.py::test_report_renders_all_sites - ImportError: can...\n1 failed, 9 passed, 2 warnings in 8.71s\n"
+          },
+          {
+            "python": "3.13",
+            "mode": "requirements",
+            "check": "acceptance",
+            "exit_code": 1,
+            "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\baseline-034624015e70\\logs\\018-acceptance-3.13-requirements.log",
+            "stderr_tail": "",
+            "stdout_tail": "es\\pydantic\\typing.py:400\n..\\..\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\pydantic\\typing.py:400\n..\\..\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\pydantic\\typing.py:400\n..\\..\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\pydantic\\typing.py:400\n..\\..\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\pydantic\\typing.py:400\n..\\..\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\pydantic\\typing.py:400\n  E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\pydantic\\typing.py:400: DeprecationWarning: Failing to pass a value to the 'type_params' parameter of 'typing._eval_type' is deprecated, as it leads to incorrect behaviour when calling typing._eval_type on a stringified annotation that references a PEP 695 type parameter. It will be disallowed in Python 3.15.\n    value = _eval_type(value, base_globals, None)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nFAILED ..\\..\\..\\acceptance\\linkwatch\\test_acceptance.py::test_cache_round_trip_and_report\n1 failed, 10 passed, 6 warnings in 1.10s\n"
+          },
+          {
+            "python": "3.13",
+            "mode": "package",
+            "check": "import_smoke",
+            "exit_code": 1,
+            "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\baseline-034624015e70\\logs\\021-import-3.13-package.log",
+            "stderr_tail": "ames_removed\n  File \"E:\\Projects\\PR Analyser\\.resilience\\worktrees\\baseline-034624015e70\\linkwatch\\report.py\", line 3, in <module>\n    from jinja2 import Environment, FileSystemLoader, select_autoescape\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-5ddf6622003e\\Lib\\site-packages\\jinja2\\__init__.py\", line 12, in <module>\n    from .environment import Environment\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-5ddf6622003e\\Lib\\site-packages\\jinja2\\environment.py\", line 25, in <module>\n    from .defaults import BLOCK_END_STRING\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-5ddf6622003e\\Lib\\site-packages\\jinja2\\defaults.py\", line 3, in <module>\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-5ddf6622003e\\Lib\\site-packages\\jinja2\\filters.py\", line 13, in <module>\n    from markupsafe import soft_unicode\nImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-5ddf6622003e\\Lib\\site-packages\\markupsafe\\__init__.py)\n",
+            "stdout_tail": ""
+          },
+          {
+            "python": "3.13",
+            "mode": "package",
+            "check": "pytest",
+            "exit_code": 1,
+            "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\baseline-034624015e70\\logs\\023-pytest-3.13-package.log",
+            "stderr_tail": "",
+            "stdout_tail": "ober KJSEE\\.resilience\\venvs\\py3.13-package-5ddf6622003e\\Lib\\site-packages\\pydantic\\_internal\\_config.py:408: UserWarning: Valid config keys have changed in V2:\n  * 'anystr_strip_whitespace' has been renamed to 'str_strip_whitespace'\n    warnings.warn(message, UserWarning)\n\nlinkwatch\\config.py:27\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\baseline-034624015e70\\linkwatch\\config.py:27: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/\n    class Settings(BaseModel):\n\nlinkwatch\\resources.py:1\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\baseline-034624015e70\\linkwatch\\resources.py:1: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\n    import pkg_resources\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nFAILED tests/test_report.py::test_report_renders_all_sites - ImportError: can...\n1 failed, 9 passed, 6 warnings in 8.76s\n"
+          },
+          {
+            "python": "3.13",
+            "mode": "package",
+            "check": "acceptance",
+            "exit_code": 1,
+            "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\baseline-034624015e70\\logs\\024-acceptance-3.13-package.log",
+            "stderr_tail": "",
+            "stdout_tail": "dev/2.14/migration/\n    class Site(BaseModel):\n\n..\\..\\venvs\\py3.13-package-5ddf6622003e\\Lib\\site-packages\\pydantic\\_internal\\_config.py:408\n  E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-5ddf6622003e\\Lib\\site-packages\\pydantic\\_internal\\_config.py:408: UserWarning: Valid config keys have changed in V2:\n  * 'anystr_strip_whitespace' has been renamed to 'str_strip_whitespace'\n    warnings.warn(message, UserWarning)\n\nlinkwatch\\config.py:27\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\baseline-034624015e70\\linkwatch\\config.py:27: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/\n    class Settings(BaseModel):\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nFAILED ..\\..\\..\\acceptance\\linkwatch\\test_acceptance.py::test_whitespace_is_stripped_from_site_fields\nFAILED ..\\..\\..\\acceptance\\linkwatch\\test_acceptance.py::test_cache_round_trip_and_report\n2 failed, 9 passed, 5 warnings in 1.20s\n"
+          }
+        ],
+        "failed_tests": [
+          {
+            "python": "3.12",
+            "mode": "requirements",
+            "test": "tests.test_report::test_report_renders_all_sites",
+            "outcome": "failed",
+            "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-b12f1f0472d3\\Lib\\site-packages\\markupsafe\\__init__.py)"
+          },
+          {
+            "python": "3.12",
+            "mode": "requirements",
+            "test": "test_acceptance::test_cache_round_trip_and_report",
+            "outcome": "failed",
+            "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-b12f1f0472d3\\Lib\\site-packages\\markupsafe\\__init__.py)"
+          },
+          {
+            "python": "3.12",
+            "mode": "package",
+            "test": "tests.test_report::test_report_renders_all_sites",
+            "outcome": "failed",
+            "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-ac57452d75c0\\Lib\\site-packages\\markupsafe\\__init__.py)"
+          },
+          {
+            "python": "3.12",
+            "mode": "package",
+            "test": "test_acceptance::test_whitespace_is_stripped_from_site_fields",
+            "outcome": "failed",
+            "message": "pydantic_core._pydantic_core.ValidationError: 1 validation error for Site\nurl\n  Value error, url must start with http:// or https:// [type=value_error, input_value='  https://example.com  ', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+          },
+          {
+            "python": "3.12",
+            "mode": "package",
+            "test": "test_acceptance::test_cache_round_trip_and_report",
+            "outcome": "failed",
+            "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-ac57452d75c0\\Lib\\site-packages\\markupsafe\\__init__.py)"
+          },
+          {
+            "python": "3.13",
+            "mode": "requirements",
+            "test": "tests.test_report::test_report_renders_all_sites",
+            "outcome": "failed",
+            "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\markupsafe\\__init__.py)"
+          },
+          {
+            "python": "3.13",
+            "mode": "requirements",
+            "test": "test_acceptance::test_cache_round_trip_and_report",
+            "outcome": "failed",
+            "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-8d6ccaf3d0bd\\Lib\\site-packages\\markupsafe\\__init__.py)"
+          },
+          {
+            "python": "3.13",
+            "mode": "package",
+            "test": "tests.test_report::test_report_renders_all_sites",
+            "outcome": "failed",
+            "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-5ddf6622003e\\Lib\\site-packages\\markupsafe\\__init__.py)"
+          },
+          {
+            "python": "3.13",
+            "mode": "package",
+            "test": "test_acceptance::test_whitespace_is_stripped_from_site_fields",
+            "outcome": "failed",
+            "message": "pydantic_core._pydantic_core.ValidationError: 1 validation error for Site\nurl\n  Value error, url must start with http:// or https:// [type=value_error, input_value='  https://example.com  ', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+          },
+          {
+            "python": "3.13",
+            "mode": "package",
+            "test": "test_acceptance::test_cache_round_trip_and_report",
+            "outcome": "failed",
+            "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-5ddf6622003e\\Lib\\site-packages\\markupsafe\\__init__.py)"
+          }
+        ],
+        "missing_interpreters": [],
+        "untested_required": [],
+        "environments_tested": [
+          "py3.12/requirements",
+          "py3.12/package",
+          "py3.13/requirements",
+          "py3.13/package"
+        ]
+      },
+      "logs": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\baseline-034624015e70\\logs",
+      "matrix": [
+        {
+          "python": "3.12",
+          "mode": "requirements",
+          "status": "failed",
+          "resolved": {
+            "appdirs": "1.4.4",
+            "certifi": "2026.7.22",
+            "chardet": "5.2.0",
+            "charset-normalizer": "3.5.2",
+            "click": "8.5.0",
+            "colorama": "0.4.6",
+            "idna": "2.7",
+            "iniconfig": "2.3.1",
+            "jinja2": "2.11.3",
+            "markdown-it-py": "4.2.0",
+            "markupsafe": "3.0.4",
+            "mdurl": "0.1.2",
+            "nose": "1.3.7",
+            "packaging": "26.3",
+            "pluggy": "1.6.0",
+            "pydantic": "1.10.13",
+            "pygments": "2.21.0",
+            "pytest": "9.1.1",
+            "python-dateutil": "2.9.0.post0",
+            "requests": "2.31.0",
+            "rich": "15.0.0",
+            "setuptools": "75.8.0",
+            "six": "1.17.0",
+            "toml": "0.10.2",
+            "typing-extensions": "4.16.0",
+            "urllib3": "2.8.0"
+          }
+        },
+        {
+          "python": "3.12",
+          "mode": "package",
+          "status": "failed",
+          "resolved": {
+            "annotated-types": "0.8.0",
+            "appdirs": "1.4.4",
+            "certifi": "2026.7.22",
+            "chardet": "5.2.0",
+            "charset-normalizer": "3.5.2",
+            "click": "8.5.0",
+            "colorama": "0.4.6",
+            "idna": "2.7",
+            "iniconfig": "2.3.1",
+            "jinja2": "2.11.3",
+            "markdown-it-py": "4.2.0",
+            "markupsafe": "3.0.4",
+            "mdurl": "0.1.2",
+            "nose": "1.3.7",
+            "packaging": "26.3",
+            "pluggy": "1.6.0",
+            "pydantic": "2.14.1",
+            "pydantic-core": "2.50.1",
+            "pygments": "2.21.0",
+            "pytest": "9.1.1",
+            "python-dateutil": "2.9.0.post0",
+            "requests": "2.31.0",
+            "rich": "15.0.0",
+            "setuptools": "75.8.0",
+            "six": "1.17.0",
+            "toml": "0.10.2",
+            "typing-extensions": "4.16.0",
+            "typing-inspection": "0.4.4",
+            "urllib3": "2.8.0"
+          }
+        },
+        {
+          "python": "3.13",
+          "mode": "requirements",
+          "status": "failed",
+          "resolved": {
+            "appdirs": "1.4.4",
+            "certifi": "2026.7.22",
+            "chardet": "5.2.0",
+            "charset-normalizer": "3.5.2",
+            "click": "8.5.0",
+            "colorama": "0.4.6",
+            "idna": "2.7",
+            "iniconfig": "2.3.1",
+            "jinja2": "2.11.3",
+            "markdown-it-py": "4.2.0",
+            "markupsafe": "3.0.4",
+            "mdurl": "0.1.2",
+            "nose": "1.3.7",
+            "packaging": "26.3",
+            "pluggy": "1.6.0",
+            "pydantic": "1.10.13",
+            "pygments": "2.21.0",
+            "pytest": "9.1.1",
+            "python-dateutil": "2.9.0.post0",
+            "requests": "2.31.0",
+            "rich": "15.0.0",
+            "setuptools": "75.8.0",
+            "six": "1.17.0",
+            "toml": "0.10.2",
+            "typing-extensions": "4.16.0",
+            "urllib3": "2.8.0"
+          }
+        },
+        {
+          "python": "3.13",
+          "mode": "package",
+          "status": "failed",
+          "resolved": {
+            "annotated-types": "0.8.0",
+            "appdirs": "1.4.4",
+            "certifi": "2026.7.22",
+            "chardet": "5.2.0",
+            "charset-normalizer": "3.5.2",
+            "click": "8.5.0",
+            "colorama": "0.4.6",
+            "idna": "2.7",
+            "iniconfig": "2.3.1",
+            "jinja2": "2.11.3",
+            "markdown-it-py": "4.2.0",
+            "markupsafe": "3.0.4",
+            "mdurl": "0.1.2",
+            "nose": "1.3.7",
+            "packaging": "26.3",
+            "pluggy": "1.6.0",
+            "pydantic": "2.14.1",
+            "pydantic-core": "2.50.1",
+            "pygments": "2.21.0",
+            "pytest": "9.1.1",
+            "python-dateutil": "2.9.0.post0",
+            "requests": "2.31.0",
+            "rich": "15.0.0",
+            "setuptools": "75.8.0",
+            "six": "1.17.0",
+            "toml": "0.10.2",
+            "typing-extensions": "4.16.0",
+            "typing-inspection": "0.4.4",
+            "urllib3": "2.8.0"
+          }
+        }
+      ]
+    },
+    "attempts": [
+      {
+        "label": "RA-pydantic-A1-attempt1",
+        "cand_id": "A1",
+        "gate": {
+          "passed": false,
+          "reasons": [
+            "2 test(s) fail that passed in baseline",
+            "4 issue target test run(s) still fail"
+          ],
+          "fully_green": false,
+          "full_gate": {
+            "passed": false,
+            "failures": [
+              {
+                "python": "3.12",
+                "mode": "requirements",
+                "check": "import_smoke",
+                "exit_code": 1,
+                "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\RA-pydantic-A1-attempt1\\logs\\003-import-3.12-requirements.log",
+                "stderr_tail": "e \"E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\report.py\", line 3, in <module>\n    from jinja2 import Environment, FileSystemLoader, select_autoescape\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-6dba5a1f2c97\\Lib\\site-packages\\jinja2\\__init__.py\", line 12, in <module>\n    from .environment import Environment\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-6dba5a1f2c97\\Lib\\site-packages\\jinja2\\environment.py\", line 25, in <module>\n    from .defaults import BLOCK_END_STRING\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-6dba5a1f2c97\\Lib\\site-packages\\jinja2\\defaults.py\", line 3, in <module>\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-6dba5a1f2c97\\Lib\\site-packages\\jinja2\\filters.py\", line 13, in <module>\n    from markupsafe import soft_unicode\nImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-6dba5a1f2c97\\Lib\\site-packages\\markupsafe\\__init__.py)\n",
+                "stdout_tail": ""
+              },
+              {
+                "python": "3.12",
+                "mode": "requirements",
+                "check": "pytest",
+                "exit_code": 1,
+                "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\RA-pydantic-A1-attempt1\\logs\\005-pytest-3.12-requirements.log",
+                "stderr_tail": "",
+                "stdout_tail": "id config keys have changed in V2:\n  * 'anystr_strip_whitespace' has been renamed to 'str_strip_whitespace'\n    warnings.warn(message, UserWarning)\n\nlinkwatch\\config.py:27\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\config.py:27: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/\n    class Settings(BaseModel):\n\nlinkwatch\\resources.py:1\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\resources.py:1: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\n    import pkg_resources\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n============================================================== short test summary info ==============================================================\nFAILED tests/test_report.py::test_report_renders_all_sites - ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\Hacktobe...\n1 failed, 9 passed, 6 warnings in 9.52s\n"
+              },
+              {
+                "python": "3.12",
+                "mode": "requirements",
+                "check": "acceptance",
+                "exit_code": 1,
+                "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\RA-pydantic-A1-attempt1\\logs\\006-acceptance-3.12-requirements.log",
+                "stderr_tail": "",
+                "stdout_tail": "nce\\venvs\\py3.12-requirements-6dba5a1f2c97\\Lib\\site-packages\\pydantic\\_internal\\_config.py:408: UserWarning: Valid config keys have changed in V2:\n  * 'anystr_strip_whitespace' has been renamed to 'str_strip_whitespace'\n    warnings.warn(message, UserWarning)\n\nlinkwatch\\config.py:27\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\config.py:27: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/\n    class Settings(BaseModel):\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n============================================================== short test summary info ==============================================================\nFAILED ..\\..\\..\\acceptance\\linkwatch\\test_acceptance.py::test_whitespace_is_stripped_from_site_fields - pydantic_core._pydantic_core.ValidationErro...\nFAILED ..\\..\\..\\acceptance\\linkwatch\\test_acceptance.py::test_cache_round_trip_and_report - ImportError: cannot import name 'soft_unicode' from 'ma...\n2 failed, 9 passed, 5 warnings in 1.17s\n"
+              },
+              {
+                "python": "3.12",
+                "mode": "package",
+                "check": "import_smoke",
+                "exit_code": 1,
+                "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\RA-pydantic-A1-attempt1\\logs\\009-import-3.12-package.log",
+                "stderr_tail": "with_frames_removed\n  File \"E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\report.py\", line 3, in <module>\n    from jinja2 import Environment, FileSystemLoader, select_autoescape\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-c2369a685f28\\Lib\\site-packages\\jinja2\\__init__.py\", line 12, in <module>\n    from .environment import Environment\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-c2369a685f28\\Lib\\site-packages\\jinja2\\environment.py\", line 25, in <module>\n    from .defaults import BLOCK_END_STRING\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-c2369a685f28\\Lib\\site-packages\\jinja2\\defaults.py\", line 3, in <module>\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-c2369a685f28\\Lib\\site-packages\\jinja2\\filters.py\", line 13, in <module>\n    from markupsafe import soft_unicode\nImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-c2369a685f28\\Lib\\site-packages\\markupsafe\\__init__.py)\n",
+                "stdout_tail": ""
+              },
+              {
+                "python": "3.12",
+                "mode": "package",
+                "check": "pytest",
+                "exit_code": 1,
+                "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\RA-pydantic-A1-attempt1\\logs\\011-pytest-3.12-package.log",
+                "stderr_tail": "",
+                "stdout_tail": "d config keys have changed in V2:\n  * 'anystr_strip_whitespace' has been renamed to 'str_strip_whitespace'\n    warnings.warn(message, UserWarning)\n\nlinkwatch\\config.py:27\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\config.py:27: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/\n    class Settings(BaseModel):\n\nlinkwatch\\resources.py:1\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\resources.py:1: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\n    import pkg_resources\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n============================================================== short test summary info ==============================================================\nFAILED tests/test_report.py::test_report_renders_all_sites - ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\Hacktobe...\n1 failed, 9 passed, 6 warnings in 10.32s\n"
+              },
+              {
+                "python": "3.12",
+                "mode": "package",
+                "check": "acceptance",
+                "exit_code": 1,
+                "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\RA-pydantic-A1-attempt1\\logs\\012-acceptance-3.12-package.log",
+                "stderr_tail": "",
+                "stdout_tail": "silience\\venvs\\py3.12-package-c2369a685f28\\Lib\\site-packages\\pydantic\\_internal\\_config.py:408: UserWarning: Valid config keys have changed in V2:\n  * 'anystr_strip_whitespace' has been renamed to 'str_strip_whitespace'\n    warnings.warn(message, UserWarning)\n\nlinkwatch\\config.py:27\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\config.py:27: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/\n    class Settings(BaseModel):\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n============================================================== short test summary info ==============================================================\nFAILED ..\\..\\..\\acceptance\\linkwatch\\test_acceptance.py::test_whitespace_is_stripped_from_site_fields - pydantic_core._pydantic_core.ValidationErro...\nFAILED ..\\..\\..\\acceptance\\linkwatch\\test_acceptance.py::test_cache_round_trip_and_report - ImportError: cannot import name 'soft_unicode' from 'ma...\n2 failed, 9 passed, 5 warnings in 1.02s\n"
+              },
+              {
+                "python": "3.13",
+                "mode": "requirements",
+                "check": "import_smoke",
+                "exit_code": 1,
+                "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\RA-pydantic-A1-attempt1\\logs\\015-import-3.13-requirements.log",
+                "stderr_tail": "e \"E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\report.py\", line 3, in <module>\n    from jinja2 import Environment, FileSystemLoader, select_autoescape\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-83033072ec71\\Lib\\site-packages\\jinja2\\__init__.py\", line 12, in <module>\n    from .environment import Environment\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-83033072ec71\\Lib\\site-packages\\jinja2\\environment.py\", line 25, in <module>\n    from .defaults import BLOCK_END_STRING\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-83033072ec71\\Lib\\site-packages\\jinja2\\defaults.py\", line 3, in <module>\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-83033072ec71\\Lib\\site-packages\\jinja2\\filters.py\", line 13, in <module>\n    from markupsafe import soft_unicode\nImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-83033072ec71\\Lib\\site-packages\\markupsafe\\__init__.py)\n",
+                "stdout_tail": ""
+              },
+              {
+                "python": "3.13",
+                "mode": "requirements",
+                "check": "pytest",
+                "exit_code": 1,
+                "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\RA-pydantic-A1-attempt1\\logs\\017-pytest-3.13-requirements.log",
+                "stderr_tail": "",
+                "stdout_tail": "id config keys have changed in V2:\n  * 'anystr_strip_whitespace' has been renamed to 'str_strip_whitespace'\n    warnings.warn(message, UserWarning)\n\nlinkwatch\\config.py:27\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\config.py:27: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/\n    class Settings(BaseModel):\n\nlinkwatch\\resources.py:1\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\resources.py:1: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\n    import pkg_resources\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n============================================================== short test summary info ==============================================================\nFAILED tests/test_report.py::test_report_renders_all_sites - ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\Hacktobe...\n1 failed, 9 passed, 6 warnings in 9.90s\n"
+              },
+              {
+                "python": "3.13",
+                "mode": "requirements",
+                "check": "acceptance",
+                "exit_code": 1,
+                "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\RA-pydantic-A1-attempt1\\logs\\018-acceptance-3.13-requirements.log",
+                "stderr_tail": "",
+                "stdout_tail": "nce\\venvs\\py3.13-requirements-83033072ec71\\Lib\\site-packages\\pydantic\\_internal\\_config.py:408: UserWarning: Valid config keys have changed in V2:\n  * 'anystr_strip_whitespace' has been renamed to 'str_strip_whitespace'\n    warnings.warn(message, UserWarning)\n\nlinkwatch\\config.py:27\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\config.py:27: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/\n    class Settings(BaseModel):\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n============================================================== short test summary info ==============================================================\nFAILED ..\\..\\..\\acceptance\\linkwatch\\test_acceptance.py::test_whitespace_is_stripped_from_site_fields - pydantic_core._pydantic_core.ValidationErro...\nFAILED ..\\..\\..\\acceptance\\linkwatch\\test_acceptance.py::test_cache_round_trip_and_report - ImportError: cannot import name 'soft_unicode' from 'ma...\n2 failed, 9 passed, 5 warnings in 1.42s\n"
+              },
+              {
+                "python": "3.13",
+                "mode": "package",
+                "check": "import_smoke",
+                "exit_code": 1,
+                "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\RA-pydantic-A1-attempt1\\logs\\021-import-3.13-package.log",
+                "stderr_tail": "with_frames_removed\n  File \"E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\report.py\", line 3, in <module>\n    from jinja2 import Environment, FileSystemLoader, select_autoescape\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-49d3f1754a2e\\Lib\\site-packages\\jinja2\\__init__.py\", line 12, in <module>\n    from .environment import Environment\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-49d3f1754a2e\\Lib\\site-packages\\jinja2\\environment.py\", line 25, in <module>\n    from .defaults import BLOCK_END_STRING\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-49d3f1754a2e\\Lib\\site-packages\\jinja2\\defaults.py\", line 3, in <module>\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-49d3f1754a2e\\Lib\\site-packages\\jinja2\\filters.py\", line 13, in <module>\n    from markupsafe import soft_unicode\nImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-49d3f1754a2e\\Lib\\site-packages\\markupsafe\\__init__.py)\n",
+                "stdout_tail": ""
+              },
+              {
+                "python": "3.13",
+                "mode": "package",
+                "check": "pytest",
+                "exit_code": 1,
+                "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\RA-pydantic-A1-attempt1\\logs\\023-pytest-3.13-package.log",
+                "stderr_tail": "",
+                "stdout_tail": "id config keys have changed in V2:\n  * 'anystr_strip_whitespace' has been renamed to 'str_strip_whitespace'\n    warnings.warn(message, UserWarning)\n\nlinkwatch\\config.py:27\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\config.py:27: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/\n    class Settings(BaseModel):\n\nlinkwatch\\resources.py:1\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\resources.py:1: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\n    import pkg_resources\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n============================================================== short test summary info ==============================================================\nFAILED tests/test_report.py::test_report_renders_all_sites - ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\Hacktobe...\n1 failed, 9 passed, 6 warnings in 9.20s\n"
+              },
+              {
+                "python": "3.13",
+                "mode": "package",
+                "check": "acceptance",
+                "exit_code": 1,
+                "log": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\RA-pydantic-A1-attempt1\\logs\\024-acceptance-3.13-package.log",
+                "stderr_tail": "",
+                "stdout_tail": "silience\\venvs\\py3.13-package-49d3f1754a2e\\Lib\\site-packages\\pydantic\\_internal\\_config.py:408: UserWarning: Valid config keys have changed in V2:\n  * 'anystr_strip_whitespace' has been renamed to 'str_strip_whitespace'\n    warnings.warn(message, UserWarning)\n\nlinkwatch\\config.py:27\n  E:\\Projects\\PR Analyser\\.resilience\\worktrees\\RA-pydantic-A1\\linkwatch\\config.py:27: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/\n    class Settings(BaseModel):\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n============================================================== short test summary info ==============================================================\nFAILED ..\\..\\..\\acceptance\\linkwatch\\test_acceptance.py::test_whitespace_is_stripped_from_site_fields - pydantic_core._pydantic_core.ValidationErro...\nFAILED ..\\..\\..\\acceptance\\linkwatch\\test_acceptance.py::test_cache_round_trip_and_report - ImportError: cannot import name 'soft_unicode' from 'ma...\n2 failed, 9 passed, 5 warnings in 1.37s\n"
+              }
+            ],
+            "failed_tests": [
+              {
+                "python": "3.12",
+                "mode": "requirements",
+                "test": "tests.test_report::test_report_renders_all_sites",
+                "outcome": "failed",
+                "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-6dba5a1f2c97\\Lib\\site-packages\\markupsafe\\__init__.py)"
+              },
+              {
+                "python": "3.12",
+                "mode": "requirements",
+                "test": "test_acceptance::test_whitespace_is_stripped_from_site_fields",
+                "outcome": "failed",
+                "message": "pydantic_core._pydantic_core.ValidationError: 1 validation error for Site\nurl\n  Value error, url must start with http:// or https:// [type=value_error, input_value='  https://example.com  ', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+              },
+              {
+                "python": "3.12",
+                "mode": "requirements",
+                "test": "test_acceptance::test_cache_round_trip_and_report",
+                "outcome": "failed",
+                "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-6dba5a1f2c97\\Lib\\site-packages\\markupsafe\\__init__.py)"
+              },
+              {
+                "python": "3.12",
+                "mode": "package",
+                "test": "tests.test_report::test_report_renders_all_sites",
+                "outcome": "failed",
+                "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-c2369a685f28\\Lib\\site-packages\\markupsafe\\__init__.py)"
+              },
+              {
+                "python": "3.12",
+                "mode": "package",
+                "test": "test_acceptance::test_whitespace_is_stripped_from_site_fields",
+                "outcome": "failed",
+                "message": "pydantic_core._pydantic_core.ValidationError: 1 validation error for Site\nurl\n  Value error, url must start with http:// or https:// [type=value_error, input_value='  https://example.com  ', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+              },
+              {
+                "python": "3.12",
+                "mode": "package",
+                "test": "test_acceptance::test_cache_round_trip_and_report",
+                "outcome": "failed",
+                "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-c2369a685f28\\Lib\\site-packages\\markupsafe\\__init__.py)"
+              },
+              {
+                "python": "3.13",
+                "mode": "requirements",
+                "test": "tests.test_report::test_report_renders_all_sites",
+                "outcome": "failed",
+                "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-83033072ec71\\Lib\\site-packages\\markupsafe\\__init__.py)"
+              },
+              {
+                "python": "3.13",
+                "mode": "requirements",
+                "test": "test_acceptance::test_whitespace_is_stripped_from_site_fields",
+                "outcome": "failed",
+                "message": "pydantic_core._pydantic_core.ValidationError: 1 validation error for Site\nurl\n  Value error, url must start with http:// or https:// [type=value_error, input_value='  https://example.com  ', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+              },
+              {
+                "python": "3.13",
+                "mode": "requirements",
+                "test": "test_acceptance::test_cache_round_trip_and_report",
+                "outcome": "failed",
+                "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-83033072ec71\\Lib\\site-packages\\markupsafe\\__init__.py)"
+              },
+              {
+                "python": "3.13",
+                "mode": "package",
+                "test": "tests.test_report::test_report_renders_all_sites",
+                "outcome": "failed",
+                "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-49d3f1754a2e\\Lib\\site-packages\\markupsafe\\__init__.py)"
+              },
+              {
+                "python": "3.13",
+                "mode": "package",
+                "test": "test_acceptance::test_whitespace_is_stripped_from_site_fields",
+                "outcome": "failed",
+                "message": "pydantic_core._pydantic_core.ValidationError: 1 validation error for Site\nurl\n  Value error, url must start with http:// or https:// [type=value_error, input_value='  https://example.com  ', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+              },
+              {
+                "python": "3.13",
+                "mode": "package",
+                "test": "test_acceptance::test_cache_round_trip_and_report",
+                "outcome": "failed",
+                "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-49d3f1754a2e\\Lib\\site-packages\\markupsafe\\__init__.py)"
+              }
+            ],
+            "missing_interpreters": [],
+            "untested_required": [],
+            "environments_tested": [
+              "py3.12/requirements",
+              "py3.12/package",
+              "py3.13/requirements",
+              "py3.13/package"
+            ]
+          },
+          "comparison": {
+            "rows": [
+              {
+                "env": "py3.12/requirements",
+                "item": "acceptance",
+                "before": false,
+                "after": false
+              },
+              {
+                "env": "py3.12/requirements",
+                "item": "cli_help:linkwatch",
+                "before": true,
+                "after": true
+              },
+              {
+                "env": "py3.12/requirements",
+                "item": "dependency_conflicts",
+                "before": true,
+                "after": true
+              },
+              {
+                "env": "py3.12/requirements",
+                "item": "import_smoke",
+                "before": false,
+                "after": false
+              },
+              {
+                "env": "py3.12/requirements",
+                "item": "install",
+                "before": true,
+                "after": true
+              },
+              {
+                "env": "py3.12/requirements",
+                "item": "pytest",
+                "before": false,
+                "after": false
+              },
+              {
+                "env": "py3.12/requirements",
+                "item": "status",
+                "before": "failed",
+                "after": "failed"
+              },
+              {
+                "env": "py3.12/package",
+                "item": "acceptance",
+                "before": false,
+                "after": false
+              },
+              {
+                "env": "py3.12/package",
+                "item": "cli_help:linkwatch",
+                "before": true,
+                "after": true
+              },
+              {
+                "env": "py3.12/package",
+                "item": "dependency_conflicts",
+                "before": true,
+                "after": true
+              },
+              {
+                "env": "py3.12/package",
+                "item": "import_smoke",
+                "before": false,
+                "after": false
+              },
+              {
+                "env": "py3.12/package",
+                "item": "install",
+                "before": true,
+                "after": true
+              },
+              {
+                "env": "py3.12/package",
+                "item": "pytest",
+                "before": false,
+                "after": false
+              },
+              {
+                "env": "py3.12/package",
+                "item": "status",
+                "before": "failed",
+                "after": "failed"
+              },
+              {
+                "env": "py3.13/requirements",
+                "item": "acceptance",
+                "before": false,
+                "after": false
+              },
+              {
+                "env": "py3.13/requirements",
+                "item": "cli_help:linkwatch",
+                "before": true,
+                "after": true
+              },
+              {
+                "env": "py3.13/requirements",
+                "item": "dependency_conflicts",
+                "before": true,
+                "after": true
+              },
+              {
+                "env": "py3.13/requirements",
+                "item": "import_smoke",
+                "before": false,
+                "after": false
+              },
+              {
+                "env": "py3.13/requirements",
+                "item": "install",
+                "before": true,
+                "after": true
+              },
+              {
+                "env": "py3.13/requirements",
+                "item": "pytest",
+                "before": false,
+                "after": false
+              },
+              {
+                "env": "py3.13/requirements",
+                "item": "status",
+                "before": "failed",
+                "after": "failed"
+              },
+              {
+                "env": "py3.13/package",
+                "item": "acceptance",
+                "before": false,
+                "after": false
+              },
+              {
+                "env": "py3.13/package",
+                "item": "cli_help:linkwatch",
+                "before": true,
+                "after": true
+              },
+              {
+                "env": "py3.13/package",
+                "item": "dependency_conflicts",
+                "before": true,
+                "after": true
+              },
+              {
+                "env": "py3.13/package",
+                "item": "import_smoke",
+                "before": false,
+                "after": false
+              },
+              {
+                "env": "py3.13/package",
+                "item": "install",
+                "before": true,
+                "after": true
+              },
+              {
+                "env": "py3.13/package",
+                "item": "pytest",
+                "before": false,
+                "after": false
+              },
+              {
+                "env": "py3.13/package",
+                "item": "status",
+                "before": "failed",
+                "after": "failed"
+              }
+            ],
+            "regressions": [
+              "py3.12/requirements test_acceptance::test_whitespace_is_stripped_from_site_fields",
+              "py3.13/requirements test_acceptance::test_whitespace_is_stripped_from_site_fields"
+            ],
+            "fixed": []
+          },
+          "new_check_failures": [],
+          "new_test_failures": [
+            {
+              "python": "3.12",
+              "mode": "requirements",
+              "test": "test_acceptance::test_whitespace_is_stripped_from_site_fields",
+              "outcome": "failed",
+              "message": "pydantic_core._pydantic_core.ValidationError: 1 validation error for Site\nurl\n  Value error, url must start with http:// or https:// [type=value_error, input_value='  https://example.com  ', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+            },
+            {
+              "python": "3.13",
+              "mode": "requirements",
+              "test": "test_acceptance::test_whitespace_is_stripped_from_site_fields",
+              "outcome": "failed",
+              "message": "pydantic_core._pydantic_core.ValidationError: 1 validation error for Site\nurl\n  Value error, url must start with http:// or https:// [type=value_error, input_value='  https://example.com  ', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+            }
+          ],
+          "target_failures": [
+            {
+              "python": "3.12",
+              "mode": "requirements",
+              "test": "test_acceptance::test_whitespace_is_stripped_from_site_fields",
+              "outcome": "failed",
+              "message": "pydantic_core._pydantic_core.ValidationError: 1 validation error for Site\nurl\n  Value error, url must start with http:// or https:// [type=value_error, input_value='  https://example.com  ', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+            },
+            {
+              "python": "3.12",
+              "mode": "package",
+              "test": "test_acceptance::test_whitespace_is_stripped_from_site_fields",
+              "outcome": "failed",
+              "message": "pydantic_core._pydantic_core.ValidationError: 1 validation error for Site\nurl\n  Value error, url must start with http:// or https:// [type=value_error, input_value='  https://example.com  ', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+            },
+            {
+              "python": "3.13",
+              "mode": "requirements",
+              "test": "test_acceptance::test_whitespace_is_stripped_from_site_fields",
+              "outcome": "failed",
+              "message": "pydantic_core._pydantic_core.ValidationError: 1 validation error for Site\nurl\n  Value error, url must start with http:// or https:// [type=value_error, input_value='  https://example.com  ', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+            },
+            {
+              "python": "3.13",
+              "mode": "package",
+              "test": "test_acceptance::test_whitespace_is_stripped_from_site_fields",
+              "outcome": "failed",
+              "message": "pydantic_core._pydantic_core.ValidationError: 1 validation error for Site\nurl\n  Value error, url must start with http:// or https:// [type=value_error, input_value='  https://example.com  ', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+            }
+          ],
+          "pre_existing_out_of_scope": [
+            {
+              "python": "3.12",
+              "mode": "requirements",
+              "test": "tests.test_report::test_report_renders_all_sites",
+              "outcome": "failed",
+              "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-6dba5a1f2c97\\Lib\\site-packages\\markupsafe\\__init__.py)"
+            },
+            {
+              "python": "3.12",
+              "mode": "requirements",
+              "test": "test_acceptance::test_cache_round_trip_and_report",
+              "outcome": "failed",
+              "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-requirements-6dba5a1f2c97\\Lib\\site-packages\\markupsafe\\__init__.py)"
+            },
+            {
+              "python": "3.12",
+              "mode": "package",
+              "test": "tests.test_report::test_report_renders_all_sites",
+              "outcome": "failed",
+              "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-c2369a685f28\\Lib\\site-packages\\markupsafe\\__init__.py)"
+            },
+            {
+              "python": "3.12",
+              "mode": "package",
+              "test": "test_acceptance::test_cache_round_trip_and_report",
+              "outcome": "failed",
+              "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.12-package-c2369a685f28\\Lib\\site-packages\\markupsafe\\__init__.py)"
+            },
+            {
+              "python": "3.13",
+              "mode": "requirements",
+              "test": "tests.test_report::test_report_renders_all_sites",
+              "outcome": "failed",
+              "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-83033072ec71\\Lib\\site-packages\\markupsafe\\__init__.py)"
+            },
+            {
+              "python": "3.13",
+              "mode": "requirements",
+              "test": "test_acceptance::test_cache_round_trip_and_report",
+              "outcome": "failed",
+              "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-requirements-83033072ec71\\Lib\\site-packages\\markupsafe\\__init__.py)"
+            },
+            {
+              "python": "3.13",
+              "mode": "package",
+              "test": "tests.test_report::test_report_renders_all_sites",
+              "outcome": "failed",
+              "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-49d3f1754a2e\\Lib\\site-packages\\markupsafe\\__init__.py)"
+            },
+            {
+              "python": "3.13",
+              "mode": "package",
+              "test": "test_acceptance::test_cache_round_trip_and_report",
+              "outcome": "failed",
+              "message": "ImportError: cannot import name 'soft_unicode' from 'markupsafe' (E:\\Projects\\PR Analyser\\.resilience\\venvs\\py3.13-package-49d3f1754a2e\\Lib\\site-packages\\markupsafe\\__init__.py)"
+            }
+          ],
+          "inconsistent": []
+        },
+        "logs": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\verification\\RA-pydantic-A1-attempt1\\logs",
+        "commit": "bf9098f8700683c66bb366aa57ab95e0550c1533",
+        "branch": "ra/RA-pydantic-A1"
+      }
+    ]
+  },
+  "selected": {
+    "cand_id": "A1",
+    "strategy": "minimal",
+    "branch": "ra/RA-pydantic-A1",
+    "patch_file": "E:\\Projects\\PR Analyser\\.resilience\\artifacts\\capsules\\RA-pydantic\\selected.patch"
+  },
+  "rollback": "The change exists only on branch ra/RA-pydantic-A1 (worktree). Rollback before merge: `git branch -D ra/RA-pydantic-A1`. After merge: `git revert <merge-commit>` and reinstall with the previous manifests (baseline commit 034624015e70).",
+  "unresolved": [
+    "2 test(s) fail that passed in baseline",
+    "4 issue target test run(s) still fail",
+    "pre-existing, out of scope: tests.test_report::test_report_renders_all_sites (3.12/requirements)",
+    "pre-existing, out of scope: test_acceptance::test_cache_round_trip_and_report (3.12/requirements)",
+    "pre-existing, out of scope: tests.test_report::test_report_renders_all_sites (3.12/package)",
+    "pre-existing, out of scope: test_acceptance::test_cache_round_trip_and_report (3.12/package)",
+    "pre-existing, out of scope: tests.test_report::test_report_renders_all_sites (3.13/requirements)",
+    "pre-existing, out of scope: test_acceptance::test_cache_round_trip_and_report (3.13/requirements)",
+    "pre-existing, out of scope: tests.test_report::test_report_renders_all_sites (3.13/package)",
+    "pre-existing, out of scope: test_acceptance::test_cache_round_trip_and_report (3.13/package)"
+  ],
+  "gaps": [
+    "Isolation is reduced-trust local mode (git worktree + venv), not a container sandbox."
+  ]
+}

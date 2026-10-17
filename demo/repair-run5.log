@@ -1,0 +1,72 @@
+[gate 1] approved by maintainer; scope = ['jinja2', 'pydantic']
+[repair] previous run archived as RA-pydantic@archived-2026-10-15T09:23:35+00:00
+[repair] proposer A (minimal) ...
+[repair]   A1: valid=True files=['requirements.txt', 'pyproject.toml'] []
+[repair] proposer B (migration) ...
+[repair]   B1: valid=False files=[] ['model error: ollama request failed: ReadTimeout: timed out']
+[repair] proposer C (alternative) ...
+[repair]   C1: valid=True files=['pyproject.toml', 'requirements.txt'] []
+[repair] reviewer A reviewing Proposal-P ...
+[repair] reviewer B reviewing Proposal-P, Proposal-Q ...
+[repair] reviewer C reviewing Proposal-Q ...
+[repair] 2 anonymous reviews collected
+[repair] ranking: A1=4.733, C1=4.733
+[apply] A1 committed on ra/RA-pydantic-A1 in E:\Projects\PR Analyser\.resilience\worktrees\RA-pydantic-A1
+[verify:RA-pydantic-A1-attempt1] python 3.12 / install via requirements
+[verify:RA-pydantic-A1-attempt1]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, 
+acceptance=FAIL
+[verify:RA-pydantic-A1-attempt1] python 3.12 / install via package
+[verify:RA-pydantic-A1-attempt1]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, 
+acceptance=FAIL
+[verify:RA-pydantic-A1-attempt1] python 3.13 / install via requirements
+[verify:RA-pydantic-A1-attempt1]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, 
+acceptance=FAIL
+[verify:RA-pydantic-A1-attempt1] python 3.13 / install via package
+[verify:RA-pydantic-A1-attempt1]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, 
+acceptance=FAIL
+[verify] A1 gate FAILED: ['2 test(s) fail that passed in baseline', '4 issue target test run(s) still fail']; fully green: False; weights -> {'A': 
+0.6, 'B': 1.0, 'C': 0.9}
+[retry] attempt 1 failed; feeding verifier evidence back to proposer A
+[repair] proposer A (minimal) revising ...
+[repair]   A: edits rejected by validator (1 problem(s)); asking for a correction
+[retry] new candidate A2 valid=False ["pyproject.toml: find text occurs 0 times (must be exactly once): 'pydantic==1.10.13'"]
+[repair] ranking: C1=4.733
+[apply] C1 committed on ra/RA-pydantic-C1 in E:\Projects\PR Analyser\.resilience\worktrees\RA-pydantic-C1
+[verify:RA-pydantic-C1-attempt2] python 3.12 / install via requirements
+[verify:RA-pydantic-C1-attempt2]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, 
+acceptance=FAIL
+[verify:RA-pydantic-C1-attempt2] python 3.12 / install via package
+[verify:RA-pydantic-C1-attempt2]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, 
+acceptance=FAIL
+[verify:RA-pydantic-C1-attempt2] python 3.13 / install via requirements
+[verify:RA-pydantic-C1-attempt2]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, 
+acceptance=FAIL
+[verify:RA-pydantic-C1-attempt2] python 3.13 / install via package
+[verify:RA-pydantic-C1-attempt2]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, 
+acceptance=FAIL
+[verify] C1 gate FAILED: ['2 test(s) fail that passed in baseline', '4 issue target test run(s) still fail']; fully green: False; weights -> {'A': 
+0.5, 'B': 1.0, 'C': 0.5}
+[retry] attempt 2 failed; feeding verifier evidence back to proposer C
+[repair] proposer C (alternative) revising ...
+[retry] new candidate C2 valid=True []
+[repair] reviewer A reviewing Proposal-P ...
+[repair] reviewer B reviewing Proposal-P ...
+[repair] ranking: C2=4.108
+[apply] C2 committed on ra/RA-pydantic-C2 in E:\Projects\PR Analyser\.resilience\worktrees\RA-pydantic-C2
+[verify:RA-pydantic-C2-attempt3] python 3.12 / install via requirements
+[verify:RA-pydantic-C2-attempt3]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, 
+acceptance=FAIL
+[verify:RA-pydantic-C2-attempt3] python 3.12 / install via package
+[verify:RA-pydantic-C2-attempt3]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, 
+acceptance=FAIL
+[verify:RA-pydantic-C2-attempt3] python 3.13 / install via requirements
+[verify:RA-pydantic-C2-attempt3]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, 
+acceptance=FAIL
+[verify:RA-pydantic-C2-attempt3] python 3.13 / install via package
+[verify:RA-pydantic-C2-attempt3]   failed: install=ok, dependency_conflicts=ok, import_smoke=FAIL, cli_help:linkwatch=ok, pytest=FAIL, 
+acceptance=FAIL
+[verify] C2 gate FAILED: ['2 test(s) fail that passed in baseline', '4 issue target test run(s) still fail']; fully green: False; weights -> {'A': 
+0.4, 'B': 0.9, 'C': 0.2}
+[capsule] NO_VERIFIED_SOLUTION -> E:\Projects\PR Analyser\.resilience\artifacts\capsules\RA-pydantic
+status: no_verified_solution  waiting at: nothing
+capsule: E:\Projects\PR Analyser\.resilience\artifacts\capsules\RA-pydantic

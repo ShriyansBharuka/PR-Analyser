@@ -1,0 +1,26 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 6c2754a..2471bd6 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -13,7 +13,7 @@ dependencies = [
+     "toml==0.10.2",
+     "appdirs==1.4.4",
+     "requests==2.31.0",
+-    "Jinja2==2.11.3",
++    "Jinja2==3.1.6",
+     "pydantic>=2",
+     "click>=7",
+     "six",
+diff --git a/requirements.txt b/requirements.txt
+index 6d525b7..a605f9f 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,7 +1,7 @@
+ toml==0.10.2
+ appdirs==1.4.4
+ requests==2.31.0
+-Jinja2==2.11.3
++Jinja2==3.1.6
+ pydantic==1.10.13
+ click>=7
+ six
