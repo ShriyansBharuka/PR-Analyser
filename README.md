@@ -128,8 +128,7 @@ Speed on an i5 with 16 GB RAM and no GPU: about 2.5 minutes per council vote and
 Prerequisites: Python 3.12+, Git, [uv](https://docs.astral.sh/uv/), [Ollama](https://ollama.com) and Python 3.12 and 3.13 interpreters for the verifier.
 
 ```bash
-git clone https://github.com/ShriyansBharuka/H26_GravityFalls_Protocol.git
-cd H26_GravityFalls_Protocol
+
 
 uv python install 3.12 3.13
 uv venv --python 3.12 .venv-agent
@@ -186,7 +185,7 @@ Settings are environment variables prefixed `RA_` (see `.env.example`). Full arc
 
 ## Links
 
-- Source and demo: [github.com/ShriyansBharuka/H26_GravityFalls_Protocol](https://github.com/ShriyansBharuka/H26_GravityFalls_Protocol)
+
 - Target repo: [github.com/rishrek/LinkWatch](https://github.com/rishrek/LinkWatch)
 - Agent Skills spec: [agentskills.io/specification](https://agentskills.io/specification)
 - Inspiration for the anonymous review council: [github.com/karpathy/llm-council](https://github.com/karpathy/llm-council)
