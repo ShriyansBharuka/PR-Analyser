@@ -4,7 +4,7 @@
 
 Most tools say "this version is old". PR Analyser finds problems that only appear when the code runs, tries fixes in isolation, verifies them with real tests, and hands a human a ready-to-review package. Every statement it makes is labelled by how it is known.
 
-Built at Hacktoberfest Hack Day Mumbai and tested on [LinkWatch](https://github.com/rishrek/LinkWatch), a Python CLI that checks website uptime.
+Tested on [LinkWatch](https://github.com/rishrek/LinkWatch), a Python CLI that checks website uptime.
 
 ---
 
